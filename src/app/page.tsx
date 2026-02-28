@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Hero } from '@/components/Hero';
 import { Certifications } from '@/components/Certifications';
 import { BentoGrid } from '@/components/BentoGrid';
@@ -5,21 +6,27 @@ import { DevPortal } from '@/components/DevPortal';
 import { ContactForm } from '@/components/ContactForm';
 
 const Navbar = () => (
-  <nav className="fixed top-0 inset-x-0 z-50 px-6 py-6">
-    <div className="max-w-7xl mx-auto flex items-center justify-between glass px-6 py-4 rounded-2xl border-white/5 shadow-2xl">
-      <div className="flex items-center gap-2">
-        <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center font-black text-slate-950 text-xl tracking-tighter">MP</div>
-        <span className="text-xl font-bold tracking-tighter text-white">MyPass</span>
+  <nav className="fixed top-0 inset-x-0 z-50 px-5 py-5 md:px-8">
+    <div className="max-w-7xl mx-auto flex items-center justify-between glass px-8 py-5 rounded-[21px] border-white/5 shadow-[0_13px_34px_rgba(0,0,0,0.5)]">
+      <div className="flex items-center gap-3">
+        <Image
+          src="/assets/logos/mypass-logo.png"
+          alt="MyPass Logo"
+          width={144}
+          height={34}
+          className="h-[34px] w-auto brightness-110 drop-shadow-[0_0_8px_rgba(52,211,153,0.3)]"
+          priority
+        />
       </div>
 
-      <div className="hidden md:flex items-center gap-8">
-        <a href="#" className="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors">Produtos</a>
-        <a href="#" className="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors">Segurança</a>
-        <a href="#" className="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors">Documentação</a>
-        <a href="#" className="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors">Preços</a>
+      <div className="hidden md:flex items-center gap-13">
+        <a href="#" className="text-[10px] font-black uppercase tracking-[0.21em] text-slate-400 hover:text-white transition-colors duration-300">Produtos</a>
+        <a href="#" className="text-[10px] font-black uppercase tracking-[0.21em] text-slate-400 hover:text-white transition-colors duration-300">Segurança</a>
+        <a href="#" className="text-[10px] font-black uppercase tracking-[0.21em] text-slate-400 hover:text-white transition-colors duration-300">Documentação</a>
+        <a href="#" className="text-[10px] font-black uppercase tracking-[0.21em] text-slate-400 hover:text-white transition-colors duration-300">Preços</a>
       </div>
 
-      <button className="px-5 py-2.5 bg-white text-slate-950 text-xs font-black uppercase tracking-widest rounded-lg hover:bg-slate-200 transition-colors">
+      <button className="px-8 py-3 bg-white text-slate-950 text-[10px] font-black uppercase tracking-[0.13em] rounded-xl hover:bg-slate-200 transition-all shadow-[0_5px_13px_rgba(255,255,255,0.1)]">
         Portal
       </button>
     </div>
@@ -27,22 +34,27 @@ const Navbar = () => (
 );
 
 const Footer = () => (
-  <footer className="py-20 px-6 border-t border-white/5 bg-slate-950">
-    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+  <footer className="py-34 px-8 border-t border-white/5 bg-slate-950">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-13">
       <div className="col-span-2">
-        <div className="flex items-center gap-2 mb-6">
-          <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center font-black text-slate-950 text-xl tracking-tighter">MP</div>
-          <span className="text-xl font-bold tracking-tighter text-white">MyPass</span>
+        <div className="flex items-center gap-3 mb-8">
+          <Image
+            src="/assets/logos/mypass-logo.png"
+            alt="MyPass Logo"
+            width={144}
+            height={34}
+            className="h-[34px] w-auto opacity-80 hover:opacity-100 transition-opacity"
+          />
         </div>
-        <p className="text-slate-500 max-w-sm text-sm leading-relaxed">
+        <p className="text-slate-500 max-w-sm text-sm leading-relaxed mb-8">
           Líder global em infraestrutura de identidade determinística 3D.
           Protegendo ativos críticos com tecnologia certificada pela Praetorian.
         </p>
       </div>
 
       <div>
-        <h4 className="text-xs font-black uppercase tracking-widest text-white mb-6">Empresa</h4>
-        <ul className="space-y-4">
+        <h4 className="text-[10px] font-black uppercase tracking-[0.21em] text-white mb-8">Empresa</h4>
+        <ul className="space-y-5">
           <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Sobre Nós</a></li>
           <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Carreiras</a></li>
           <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Compliance</a></li>
@@ -51,8 +63,8 @@ const Footer = () => (
       </div>
 
       <div>
-        <h4 className="text-xs font-black uppercase tracking-widest text-white mb-6">Legal</h4>
-        <ul className="space-y-4">
+        <h4 className="text-[10px] font-black uppercase tracking-[0.21em] text-white mb-8">Legal</h4>
+        <ul className="space-y-5">
           <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">iBeta Level 1 & 2</a></li>
           <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">ISO 30107-3</a></li>
           <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Praetorian Level 4/5</a></li>
@@ -61,12 +73,12 @@ const Footer = () => (
       </div>
     </div>
 
-    <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p className="text-[10px] text-slate-600 font-bold uppercase tracking-widest">
+    <div className="max-w-7xl mx-auto mt-21 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-5">
+      <p className="text-[10px] text-slate-600 font-bold uppercase tracking-[0.13em]">
         © 2026 MyPass Identity Systems. All Rights Reserved.
       </p>
-      <div className="flex gap-6">
-        <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Built for Nasdaq Standards</span>
+      <div className="flex gap-8">
+        <span className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.13em]">Built for Nasdaq Standards</span>
       </div>
     </div>
   </footer>

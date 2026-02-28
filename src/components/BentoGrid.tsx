@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 
 const BentoCard = ({ title, description, className, visual }: { title: string, description: string, className?: string, visual?: React.ReactNode }) => (
     <div className={`group relative glass p-8 rounded-3xl overflow-hidden transition-all duration-500 hover:bg-white/10 ${className}`}>
@@ -83,7 +84,18 @@ export const BentoGrid = () => {
                         title="Infra Crítica"
                         description="Controle de acesso físico e digital em ambientes de segurança nível 4."
                         className="md:col-span-2 md:row-span-2"
-                        visual={<MockUI type="flow" />}
+                        visual={
+                            <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-1000 ease-out">
+                                <Image
+                                    src="/assets/images/trusted-core.png"
+                                    alt="Trusted Core Infrastructure"
+                                    fill
+                                    className="object-cover opacity-60 group-hover:opacity-100 transition-opacity"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+                                <div className="absolute inset-0 bg-emerald-500/10 mix-blend-overlay" />
+                            </div>
+                        }
                     />
                     <BentoCard
                         title="Desenvolvedores"

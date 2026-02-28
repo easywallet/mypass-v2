@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 
 const CodeSnippet = () => (
     <div className="bg-[#0d1117] rounded-xl border border-white/10 overflow-hidden shadow-2xl">
@@ -125,19 +126,38 @@ export const DevPortal = () => {
                     </div>
 
                     <div className="order-1 lg:order-2">
-                        <div className="relative">
-                            <div className="absolute -inset-4 bg-cyan-500/10 blur-3xl -z-10 animate-pulse" />
-                            <CodeSnippet />
+                        <div className="relative group">
+                            <div className="absolute -inset-8 bg-cyan-500/20 blur-[55px] -z-10 animate-pulse-slow" />
 
-                            {/* Floating Badge */}
-                            <div className="absolute -bottom-6 -right-6 glass p-4 rounded-xl shadow-2xl animate-bounce-slow">
+                            {/* Fibonacci Frame (px): 377 x 610 or similar aspect ratio */}
+                            <div className="relative rounded-[34px] overflow-hidden border border-white/10 shadow-[0_21px_55px_rgba(0,0,0,0.8)] bg-slate-900 group-hover:border-cyan-500/30 transition-colors duration-500">
+                                <Image
+                                    src="/assets/images/engineering-hardware.png"
+                                    alt="Engineering Hardware"
+                                    width={800}
+                                    height={500}
+                                    className="w-full h-auto object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60" />
+
+                                {/* Overlay scan effect */}
+                                <div className="absolute inset-x-0 h-[2px] bg-cyan-400/50 shadow-[0_0_13px_rgba(34,211,238,0.5)] animate-scan top-0" />
+                            </div>
+
+                            {/* Floating Snippet (Fibonacci Pos: 55px offset) */}
+                            <div className="absolute -bottom-8 -left-8 w-72 transform group-hover:-translate-y-3 transition-transform duration-500">
+                                <CodeSnippet />
+                            </div>
+
+                            {/* Floating Badge (Fibonacci Pos: 34px offset) */}
+                            <div className="absolute top-8 -right-8 glass p-5 rounded-[13px] shadow-[0_8px_21px_rgba(0,0,0,0.5)] animate-float-delayed border-white/5 bg-black/40">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded bg-emerald-500/20 flex items-center justify-center">
-                                        <span className="text-emerald-400 font-mono text-xs font-bold">ms</span>
+                                    <div className="w-8 h-8 rounded bg-cyan-500/20 flex items-center justify-center border border-cyan-500/30 shadow-[0_0_8px_rgba(6,182,212,0.2)]">
+                                        <span className="text-cyan-400 font-mono text-[10px] font-black tracking-tighter">SDK</span>
                                     </div>
                                     <div>
-                                        <div className="text-[10px] text-slate-500 font-bold uppercase tracking-tight">Latency</div>
-                                        <div className="text-sm font-black text-white">{"<"} 240ms</div>
+                                        <div className="text-[8px] text-slate-500 font-black uppercase tracking-[0.13em]">Latency (Topological)</div>
+                                        <div className="text-xs font-black text-white tracking-widest">{"<"} 240ms</div>
                                     </div>
                                 </div>
                             </div>
