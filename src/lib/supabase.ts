@@ -3,14 +3,12 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-// No hardcoded placeholders. The app will rely strictly on environment variables.
+// Only warn during build to avoid breaking the deployment.
 if (!supabaseUrl || !supabaseAnonKey) {
-    if (process.env.NODE_ENV === 'production') {
-        throw new Error("Supabase environment variables are missing!");
-    }
+    console.warn("Supabase environment variables are missing at initialization.");
 }
 
 export const supabase = createClient(
-    supabaseUrl || '',
-    supabaseAnonKey || ''
+    supabaseUrl || 'https://missing-url.supabase.co',
+    supabaseAnonKey || 'missing-key'
 );
