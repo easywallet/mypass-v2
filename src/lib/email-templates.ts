@@ -1,33 +1,22 @@
 const BIOMETRIC_FACE_HTML = `
+<img src="https://mypass-v2.vercel.app/assets/images/hero-face.png"
+     width="144" 
+     height="144"
+     alt="MyPass Biometric Face Scan"
+     style="display:block; margin:0 auto; border-radius:50%;" />
 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 0 auto; text-align: center;">
+  <tr><td height="13" style="font-size:13px; line-height:13px;">&nbsp;</td></tr>
   <tr>
     <td align="center">
-      <div style="position: relative; width: 120px; height: 120px; margin: 0 auto;">
-        <!-- Círculo Externo -->
-        <div style="box-sizing: border-box; position: absolute; top: 0; left: 0; width: 120px; height: 120px; border: 2px solid rgba(0, 212, 255, 0.25); border-radius: 50%; box-shadow: 0 0 30px rgba(0, 212, 255, 0.12);"></div>
-        
-        <!-- Círculo Médio -->
-        <div style="box-sizing: border-box; position: absolute; top: 15px; left: 15px; width: 90px; height: 90px; border: 1px solid rgba(0, 212, 255, 0.38); border-radius: 50%;"></div>
-        
-        <!-- Ícone Central SVG -->
-        <div style="position: absolute; top: 36px; left: 36px; width: 48px; height: 48px;">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM7.5 9.5C7.5 8.11929 8.61929 7 10 7C11.3807 7 12.5 8.11929 12.5 9.5C12.5 10.8807 11.3807 12 10 12C8.61929 12 7.5 10.8807 7.5 9.5ZM16.5 9.5C16.5 10.8807 15.3807 12 14 12C12.6193 12 11.5 10.8807 11.5 9.5C11.5 8.11929 12.6193 7 14 7C15.3807 7 16.5 8.11929 16.5 9.5ZM6.53609 16.993C7.23469 15.2289 8.95551 14 11 14C11.0504 14 11.1005 14.001 11.1503 14.0029C11.666 14.3725 12.2982 14.5938 12.9785 14.5938C13.6823 14.5938 14.3351 14.3582 14.8604 13.9719C14.9067 13.9905 14.9531 14 15 14C17.0445 14 18.7653 15.2289 19.4639 16.993C18.1065 19.4294 15.311 21 12 21C8.689 21 5.89346 19.4294 4.53609 16.993H6.53609Z" fill="#00d4ff"/>
-          </svg>
-        </div>
-
-        <!-- Scanning Corners -->
-        <div style="position: absolute; top: 0; left: 0; width: 12px; height: 12px; border-top: 2px solid #00d4ff; border-left: 2px solid #00d4ff;"></div>
-        <div style="position: absolute; top: 0; right: 0; width: 12px; height: 12px; border-top: 2px solid #00d4ff; border-right: 2px solid #00d4ff;"></div>
-        <div style="position: absolute; bottom: 0; left: 0; width: 12px; height: 12px; border-bottom: 2px solid #00d4ff; border-left: 2px solid #00d4ff;"></div>
-        <div style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; border-bottom: 2px solid #00d4ff; border-right: 2px solid #00d4ff;"></div>
-      </div>
-      
-      <div style="margin-top: 21px;">
-        <span style="display: inline-block; font-family: 'Inter', -apple-system, sans-serif; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: #00d4ff; background-color: rgba(0, 212, 255, 0.06); border: 1px solid rgba(0, 212, 255, 0.19); border-radius: 20px; padding: 4px 12px;">
-          LIVENESS VERIFIED &middot; 99.99%
-        </span>
-      </div>
+      <span style="display:inline-block; 
+        font-family:'Inter',sans-serif;
+        font-size:10px; font-weight:600;
+        text-transform:uppercase; letter-spacing:2px;
+        color:#00d4ff; background-color:#00d4ff10;
+        border:1px solid #00d4ff30;
+        border-radius:20px; padding:4px 12px;">
+        LIVENESS VERIFIED &middot; 99.99%
+      </span>
     </td>
   </tr>
 </table>
@@ -110,7 +99,7 @@ const BASE_EMAIL_TEMPLATE = (
 
           <!-- BLOCO 3 - CORPO -->
           <tr>
-            <td align="left" style="padding: 34px 55px; background-color: #0a0a14; border-left: 3px solid ${accentColor};">
+            <td align="left" style="padding: 34px 55px; background-color: #0f0f1f; border-left: 3px solid ${accentColor};">
               <div class="font-sans" style="font-size: 15px; font-weight: 400; color: #94a3b8; line-height: 1.6;">
                 ${bodyContent}
               </div>
@@ -119,7 +108,7 @@ const BASE_EMAIL_TEMPLATE = (
 
           <!-- BLOCO 4 - CTA BUTTON -->
           <tr>
-            <td align="center" style="padding: 0 55px 34px 55px; background-color: #0a0a14; border-left: 3px solid ${accentColor};">
+            <td align="center" style="padding: 0 55px 34px 55px; background-color: #0f0f1f; border-left: 3px solid ${accentColor};">
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center" bgcolor="${accentColor}" style="border-radius: 13px; background: ${accentColor}; background: linear-gradient(135deg, ${accentColor}, ${accentColorDark});">
@@ -355,7 +344,7 @@ export function getDeveloperInternalAlertEmail(data: {
     '#f59e0b',
     bodyContent,
     'Ver no Supabase',
-    'https://gpmybyndpzpcumcoyvnq.supabase.co'
+    'https://supabase.com/dashboard'
   );
 }
 
