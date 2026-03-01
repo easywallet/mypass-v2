@@ -52,44 +52,51 @@ export const Hero = () => {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
           <span className="text-xs font-semibold uppercase tracking-widest text-emerald-400">
-            Enterprise v2.0 Global Standard
+            Identidade Digital Soberana
           </span>
         </div>
 
-        <h1 className="text-5xl md:text-8xl font-bold tracking-tighter mb-8 leading-[1.1] animate-fade-in">
-          <span className="text-gradient block">Identidade Determinística.</span>
-          <span className="text-white">A Única Chave In-Clonável.</span>
+        <h1 className="text-5xl md:text-8xl font-bold tracking-tighter mb-8 leading-[1.1] animate-fade-in text-balance">
+          <span className="text-gradient block">Seu Rosto. Seu Token.</span>
+          <span className="text-white">Seu Controle.</span>
         </h1>
 
         <p className="max-w-3xl mx-auto text-lg md:text-xl text-slate-400 mb-12 leading-relaxed animate-fade-in delay-200">
-          Reconhecimento biométrico 3D de nível governamental com proteção contra
-          injeção de sinal certificada pela <span className="text-emerald-400 font-semibold underline decoration-emerald-400/30 underline-offset-4">Praetorian Security</span>.
-          Zero fricção, 100% integridade.
+          Uma validação biométrica de <span className="text-emerald-400 font-semibold underline decoration-emerald-400/30 underline-offset-4">Nível 4</span>.
+          Reconhecida em qualquer banco, hospital ou evento no Brasil. 100% Determinística.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-24 animate-fade-in delay-300">
-          <button className="group relative px-8 py-5 bg-white text-slate-950 font-bold rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_20px_50px_rgba(255,255,255,0.15)] overflow-hidden">
-            <span className="relative z-10">Solicitar Enterprise Demo</span>
+          <a href="#contato-enterprise" className="group relative px-8 py-5 bg-white text-slate-950 font-bold rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_20px_50px_rgba(255,255,255,0.15)] overflow-hidden flex items-center justify-center">
+            <span className="relative z-10 text-sm">Solicitar Demo Enterprise</span>
             <div className="absolute inset-0 bg-emerald-400 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
-          </button>
-          <button className="px-8 py-5 glass text-white font-bold rounded-xl glass-hover hover:scale-105 transition-all duration-300">
-            Ver Sandbox Dev
-          </button>
+          </a>
+          <a href="#developer-portal" className="px-8 py-5 glass text-white font-bold rounded-xl glass-hover hover:scale-105 transition-all duration-300 text-sm">
+            Acessar Sandbox Dev
+          </a>
         </div>
 
         <HeroVisual />
 
-        {/* Trust Bar */}
+        {/* Trust Bar - Technical Badges */}
         <div className="mt-20 pt-12 border-t border-white/5 animate-fade-in delay-500">
           <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em] mb-10">
-            Infraestrutura Confiada por Segmentos Críticos
+            Certificação Técnica & Conformidade
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-10 opacity-40 grayscale hover:opacity-100 transition-all duration-700">
-            <span className="text-xl md:text-2xl font-black text-slate-300 tracking-tighter">CROWDSTRIKE</span>
-            <span className="text-xl md:text-2xl font-black text-slate-300 tracking-tighter">PALANTIR</span>
-            <span className="text-xl md:text-2xl font-black text-slate-300 tracking-tighter">SENTINELONE</span>
-            <span className="text-xl md:text-2xl font-black text-slate-300 tracking-tighter">ZSCALER</span>
-            <span className="text-xl md:text-2xl font-black text-slate-300 tracking-tighter">LOCKHEED MARTIN</span>
+          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+            {[
+              "FaceTec Certified Partner",
+              "Praetorian Level 4 & 5",
+              "iBeta ISO 30107-3",
+              "LGPD · Privacy by Design",
+              "PIX BACEN 2026 Ready"
+            ].map((badge) => (
+              <div key={badge} className="px-4 py-2 rounded-lg border border-white/5 bg-white/5 backdrop-blur-sm group hover:border-emerald-500/30 transition-colors">
+                <span className="text-[10px] font-black text-slate-300 tracking-tighter group-hover:text-emerald-400 transition-colors whitespace-nowrap">
+                  {badge}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
