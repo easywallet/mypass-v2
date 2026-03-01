@@ -4,17 +4,33 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, ShieldCheck, Code2, ArrowRight } from "lucide-react";
 
-const FormField = ({ label, type = "text", placeholder, options }: { label: string, type?: string, placeholder?: string, options?: string[] }) => (
+const FormField = ({ label, type = "text", placeholder, options, value, onChange, required }: {
+    label: string,
+    type?: string,
+    placeholder?: string,
+    options?: string[],
+    value?: string,
+    onChange?: (e: any) => void,
+    required?: boolean
+}) => (
     <div className="space-y-2">
         <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">{label}</label>
         {options ? (
-            <select className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all appearance-none cursor-pointer">
-                <option value="" disabled selected className="bg-slate-900">{placeholder}</option>
+            <select
+                required={required}
+                value={value}
+                onChange={onChange}
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
+            >
+                <option value="" disabled className="bg-slate-900">{placeholder}</option>
                 {options.map(opt => <option key={opt} value={opt} className="bg-slate-900">{opt}</option>)}
             </select>
         ) : (
             <input
+                required={required}
                 type={type}
+                value={value}
+                onChange={onChange}
                 placeholder={placeholder}
                 className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all font-medium"
             />
@@ -34,10 +50,253 @@ const CheckboxField = ({ label, checked, onChange }: { label: string, checked: b
 );
 
 export const ContactForm = () => {
-                        </div >
-                    </div >
-                </div >
-            </div >
-        </section >
+    const [activeForm, setActiveForm] = useState<'b2b' | 'dev'>('b2b');
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+
+    // Form States
+    const [b2bData, setB2bData] = useState({ nome: '', email: '', empresa: '', cargo: '', segmento: '', mensagem: '' });
+    const [devData, setDevData] = useState({
+        nome: '',
+        email: '',
+        empresa: '',
+        github: '',
+        segmento: '',
+        integracoes: [] as string[]
+    });
+
+    const handleDevSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+
+        try {
+            const res = await fetch('/api/developer-signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    ...devData,
+                    tipos_integracao: devData.integracoes
+                })
+            });
+
+            if (res.ok) {
+                setSuccess(true);
+                setDevData({ nome: '', email: '', empresa: '', github: '', segmento: '', integracoes: [] });
+            }
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const toggleIntegration = (type: string) => {
+        setDevData(prev => ({
+            ...prev,
+            integracoes: prev.integracoes.includes(type)
+                ? prev.integracoes.filter(t => t !== type)
+                : [...prev.integracoes, type]
+        }));
+    };
+
+    return (
+        <section id="contato-enterprise" className="py-34 px-6 relative overflow-hidden bg-slate-950">
+            <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-16">
+                    <h2 className="text-[10px] font-black uppercase tracking-[.4em] text-emerald-400 mb-6">
+                        Get in touch
+                    </h2>
+                    <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-4">
+                        Vamos Iniciar a Jornada.
+                    </h3>
+                    <p className="text-slate-500 max-w-2xl mx-auto">
+                        Escolha o canal de atendimento ideal para a sua necessidade e fale com nosso time de especialistas.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-stretch">
+
+                    {/* Left Side: Context & Testimonial */}
+                    <div className="flex flex-col justify-center">
+                        <div className="space-y-12">
+                            <div className="relative glass p-8 rounded-3xl border-l-4 border-l-emerald-400">
+                                <p className="text-white text-lg italic mb-8 leading-relaxed">
+                                    "A MyPass removeu completamente o risco de Account Takeover na nossa plataforma de Wealth Management. Em menos de 2 segundos, validamos identidades com precisão absoluta."
+                                </p>
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-emerald-400">
+                                        <ShieldCheck className="w-6 h-6" />
+                                    </div>
+                                    <div>
+                                        <div className="text-sm font-bold text-white">Case disponível mediante NDA</div>
+                                        <div className="text-xs text-slate-500 font-bold uppercase tracking-tight">Fintech Tier 1, Brasil</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-8">
+                                <div>
+                                    <div className="text-3xl font-black text-white mb-2 tracking-tighter flex items-baseline gap-1">
+                                        {"<"} 2 <span className="text-sm text-slate-500 uppercase">s</span>
+                                    </div>
+                                    <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Auth Speed</div>
+                                </div>
+                                <div>
+                                    <div className="text-3xl font-black text-white mb-2 tracking-tighter">100%</div>
+                                    <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Anti-Injection</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Side: Dual Forms */}
+                    <div className="relative group">
+                        {/* Form Selection Tabs */}
+                        <div className="flex gap-4 mb-8">
+                            <button
+                                onClick={() => { setActiveForm('b2b'); setSuccess(false); }}
+                                className={`flex-1 py-4 px-6 rounded-2xl border transition-all flex items-center justify-center gap-3 font-black uppercase tracking-widest text-[10px] ${activeForm === 'b2b'
+                                        ? 'bg-emerald-500 border-emerald-400 text-slate-950 shadow-[0_10px_20px_rgba(16,185,129,0.2)]'
+                                        : 'bg-white/5 border-white/10 text-slate-500 hover:text-white hover:bg-white/10'
+                                    }`}
+                            >
+                                <ShieldCheck className="w-4 h-4" />
+                                Enterprise (B2B)
+                            </button>
+                            <button
+                                onClick={() => { setActiveForm('dev'); setSuccess(false); }}
+                                className={`flex-1 py-4 px-6 rounded-2xl border transition-all flex items-center justify-center gap-3 font-black uppercase tracking-widest text-[10px] ${activeForm === 'dev'
+                                        ? 'bg-cyan-500 border-cyan-400 text-slate-950 shadow-[0_10px_20px_rgba(6,182,212,0.2)]'
+                                        : 'bg-white/5 border-white/10 text-slate-500 hover:text-white hover:bg-white/10'
+                                    }`}
+                            >
+                                <Code2 className="w-4 h-4" />
+                                Developers
+                            </button>
+                        </div>
+
+                        <div className="glass p-10 md:p-12 rounded-[34px] border-white/5 relative">
+                            {success ? (
+                                <div className="h-[450px] flex flex-col items-center justify-center text-center space-y-6 animate-in zoom-in-95 duration-500">
+                                    <div className="w-20 h-20 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
+                                        <CheckCircle2 className="w-10 h-10" />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-2xl font-bold text-white mb-2">Solicitação Recebida!</h4>
+                                        <p className="text-slate-400 max-w-xs mx-auto">
+                                            Nosso time analisará seus dados e entrará em contato em até 1 dia útil.
+                                        </p>
+                                    </div>
+                                    <Button
+                                        variant="link"
+                                        onClick={() => setSuccess(false)}
+                                        className="text-emerald-400 font-bold uppercase tracking-widest text-[10px]"
+                                    >
+                                        Enviar outra solicitação
+                                    </Button>
+                                </div>
+                            ) : activeForm === 'b2b' ? (
+                                <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <FormField label="Nome Completo" placeholder="Ex: João Silva" required />
+                                        <FormField label="E-mail Corporativo" placeholder="exemplo@empresa.com" type="email" required />
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <FormField label="Empresa" placeholder="Sua organização" required />
+                                        <FormField label="Cargo" placeholder="Ex: Diretor de Compliance" required />
+                                    </div>
+                                    <FormField
+                                        label="Segmento"
+                                        placeholder="Selecione o setor"
+                                        options={["Fintech", "Saúde", "Eventos", "Varejo", "Educação", "GovTech", "Outro"]}
+                                        required
+                                    />
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Mensagem</label>
+                                        <textarea
+                                            rows={4}
+                                            placeholder="Como podemos ajudar sua operação?"
+                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all resize-none"
+                                        />
+                                    </div>
+                                    <Button className="w-full h-14 bg-emerald-500 text-slate-950 font-black rounded-xl hover:bg-emerald-400 transition-all shadow-xl uppercase tracking-widest text-xs">
+                                        Solicitar Demo Enterprise
+                                        <ArrowRight className="ml-2 w-4 h-4" />
+                                    </Button>
+                                </div>
+                            ) : (
+                                <form onSubmit={handleDevSubmit} className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <FormField
+                                            label="Nome Completo"
+                                            placeholder="João Silva"
+                                            required
+                                            value={devData.nome}
+                                            onChange={e => setDevData({ ...devData, nome: e.target.value })}
+                                        />
+                                        <FormField
+                                            label="E-mail Corporativo"
+                                            placeholder="exemplo@empresa.com"
+                                            type="email"
+                                            required
+                                            value={devData.email}
+                                            onChange={e => setDevData({ ...devData, email: e.target.value })}
+                                        />
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <FormField
+                                            label="Empresa"
+                                            placeholder="Sua organização"
+                                            required
+                                            value={devData.empresa}
+                                            onChange={e => setDevData({ ...devData, empresa: e.target.value })}
+                                        />
+                                        <FormField
+                                            label="GitHub username (opcional)"
+                                            placeholder="@username"
+                                            value={devData.github}
+                                            onChange={e => setDevData({ ...devData, github: e.target.value })}
+                                        />
+                                    </div>
+
+                                    <FormField
+                                        label="Segmento"
+                                        placeholder="Selecione o setor"
+                                        required
+                                        options={["Fintech", "Saúde", "Eventos", "Varejo", "Educação", "GovTech", "Outro"]}
+                                        value={devData.segmento}
+                                        onChange={e => setDevData({ ...devData, segmento: e.target.value })}
+                                    />
+
+                                    <div className="space-y-4">
+                                        <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Tipo de Integração</label>
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <CheckboxField label="KYC" checked={devData.integracoes.includes('KYC')} onChange={() => toggleIntegration('KYC')} />
+                                            <CheckboxField label="Pagamento Facial" checked={devData.integracoes.includes('Pagamento Facial')} onChange={() => toggleIntegration('Pagamento Facial')} />
+                                            <CheckboxField label="Controle de Acesso" checked={devData.integracoes.includes('Controle de Acesso')} onChange={() => toggleIntegration('Controle de Acesso')} />
+                                            <CheckboxField label="Onboarding" checked={devData.integracoes.includes('Onboarding')} onChange={() => toggleIntegration('Onboarding')} />
+                                        </div>
+                                    </div>
+
+                                    <div className="space-y-4">
+                                        <Button disabled={loading} type="submit" className="w-full h-14 bg-cyan-500 text-slate-950 font-black rounded-xl hover:bg-cyan-400 transition-all shadow-[0_20px_40px_rgba(6,182,212,0.2)] uppercase tracking-widest text-xs">
+                                            {loading ? "Processando..." : "Solicitar Acesso ao Sandbox"}
+                                            {!loading && <ArrowRight className="ml-2 w-4 h-4" />}
+                                        </Button>
+                                        <p className="text-center text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+                                            Acesso aprovado em até 1 dia útil. Sem cartão de crédito.
+                                        </p>
+                                    </div>
+                                </form>
+                            )}
+
+                            <p className="mt-8 text-center text-[9px] text-slate-600 font-bold uppercase tracking-widest leading-relaxed">
+                                Ao enviar, você concorda com nossos Termos de Compliance e <span className="text-emerald-400">LGPD</span>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     );
 };
