@@ -6,25 +6,16 @@ export const dynamic = 'force-dynamic';
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { nome, email, empresa, github, segmento, tipos_integracao } = body;
+        const { nome, email, empresa, cargo, segmento, mensagem } = body;
 
         // Basic validation
-        if (!nome || !email || !empresa || !segmento || !tipos_integracao) {
+        if (!nome || !email || !empresa || !cargo || !segmento) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
         }
 
         const { data, error } = await supabaseAdmin
-            .from('developer_signups')
-            .insert([
-                {
-                    nome,
-                    email,
-                    empresa,
-                    github: github || null,
-                    segmento,
-                    tipos_integracao
-                }
-            ]);
+            .from('enterprise_leads')
+            .insert([{ nome, email, empresa, cargo, segmento, mensagem: mensagem || null }]);
 
         if (error) {
             console.error('Supabase error:', error);
@@ -34,32 +25,32 @@ export async function POST(req: Request) {
         // --- SILENT EMAIL HANDLING ---
         try {
             const { noreplyTransporter, sandboxTransporter, NOTIFY_EMAIL } = await import('@/lib/mailer');
-            const { getDeveloperConfirmationEmail, getDeveloperInternalAlertEmail } = await import('@/lib/email-templates');
+            const { getEnterpriseConfirmationEmail, getEnterpriseInternalAlertEmail } = await import('@/lib/email-templates');
 
-            const confirmationHtml = getDeveloperConfirmationEmail({ nome });
-            const alertHtml = getDeveloperInternalAlertEmail({
+            const confirmationHtml = getEnterpriseConfirmationEmail({ nome, segmento });
+            const alertHtml = getEnterpriseInternalAlertEmail({
                 nome,
                 email,
                 empresa,
-                github: github || null,
+                cargo,
                 segmento,
-                tipos_integracao,
+                mensagem: mensagem || null,
                 created_at: new Date().toISOString()
             });
 
-            // Disparo A: Confirmação ao Dev
+            // Disparo A: Confirmação ao Enterprise Lead
             await noreplyTransporter.sendMail({
-                from: `"MyPass Sandbox" <${process.env.SMTP_USER_NOREPLY}>`,
+                from: `"MyPass Enterprise" <${process.env.SMTP_USER_NOREPLY}>`,
                 to: email,
-                subject: "Seu acesso ao Sandbox MyPass foi recebido 🚀",
+                subject: "MyPass recebeu sua solicitação de Demo Empresarial 💎",
                 html: confirmationHtml
             });
 
             // Disparo B: Alerta Interno
             await sandboxTransporter.sendMail({
-                from: `"MyPass Sandbox Alert" <${process.env.SMTP_USER_SANDBOX}>`,
+                from: `"MyPass Lead Alert" <${process.env.SMTP_USER_SANDBOX}>`,
                 to: NOTIFY_EMAIL,
-                subject: `🔔 Novo Dev Cadastrado — ${empresa} | ${segmento}`,
+                subject: `🔔 Novo Lead Enterprise — ${empresa} | ${cargo} | ${segmento}`,
                 html: alertHtml
             });
         } catch (emailError) {

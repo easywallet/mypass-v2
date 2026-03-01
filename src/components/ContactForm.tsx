@@ -65,6 +65,28 @@ export const ContactForm = () => {
         integracoes: [] as string[]
     });
 
+    const handleB2bSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+
+        try {
+            const res = await fetch('/api/enterprise-contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(b2bData)
+            });
+
+            if (res.ok) {
+                setSuccess(true);
+                setB2bData({ nome: '', email: '', empresa: '', cargo: '', segmento: '', mensagem: '' });
+            }
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const handleDevSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
@@ -196,18 +218,39 @@ export const ContactForm = () => {
                                     </Button>
                                 </div>
                             ) : activeForm === 'b2b' ? (
-                                <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                <form onSubmit={handleB2bSubmit} className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <FormField label="Nome Completo" placeholder="Ex: João Silva" required />
-                                        <FormField label="E-mail Corporativo" placeholder="exemplo@empresa.com" type="email" required />
+                                        <FormField
+                                            label="Nome Completo"
+                                            placeholder="Ex: João Silva"
+                                            required
+                                            value={b2bData.nome}
+                                            onChange={e => setB2bData({ ...b2bData, nome: e.target.value })}
+                                        />
+                                        <FormField
+                                            label="E-mail Corporativo"
+                                            placeholder="exemplo@empresa.com"
+                                            type="email"
+                                            required
+                                            value={b2bData.email}
+                                            onChange={e => setB2bData({ ...b2bData, email: e.target.value })}
+                                        />
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <FormField label="Empresa" placeholder="Sua organização" required />
+                                        <FormField
+                                            label="Empresa"
+                                            placeholder="Sua organização"
+                                            required
+                                            value={b2bData.empresa}
+                                            onChange={e => setB2bData({ ...b2bData, empresa: e.target.value })}
+                                        />
                                         <FormField
                                             label="Cargo"
                                             placeholder="Selecione seu cargo"
                                             options={["CEO", "CTO", "CISO", "Head de Produto", "Diretor", "Outro"]}
                                             required
+                                            value={b2bData.cargo}
+                                            onChange={e => setB2bData({ ...b2bData, cargo: e.target.value })}
                                         />
                                     </div>
                                     <FormField
@@ -215,20 +258,25 @@ export const ContactForm = () => {
                                         placeholder="Selecione o setor"
                                         options={["Fintech", "Saúde", "Eventos", "Varejo", "Educação", "GovTech", "Outro"]}
                                         required
+                                        value={b2bData.segmento}
+                                        onChange={e => setB2bData({ ...b2bData, segmento: e.target.value })}
                                     />
                                     <div className="space-y-2">
                                         <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Mensagem</label>
                                         <textarea
                                             rows={4}
                                             placeholder="Como podemos ajudar sua operação?"
+                                            required
+                                            value={b2bData.mensagem}
+                                            onChange={e => setB2bData({ ...b2bData, mensagem: e.target.value })}
                                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all resize-none"
                                         />
                                     </div>
-                                    <Button className="w-full h-14 bg-emerald-500 text-slate-950 font-black rounded-xl hover:bg-emerald-400 transition-all shadow-xl uppercase tracking-widest text-xs">
-                                        Solicitar Demo Enterprise
-                                        <ArrowRight className="ml-2 w-4 h-4" />
+                                    <Button disabled={loading} type="submit" className="w-full h-14 bg-emerald-500 text-slate-950 font-black rounded-xl hover:bg-emerald-400 transition-all shadow-xl uppercase tracking-widest text-xs">
+                                        {loading ? "Processando..." : "Solicitar Demo Enterprise"}
+                                        {!loading && <ArrowRight className="ml-2 w-4 h-4" />}
                                     </Button>
-                                </div>
+                                </form>
                             ) : (
                                 <form onSubmit={handleDevSubmit} className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
