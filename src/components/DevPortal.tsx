@@ -1,168 +1,207 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import { Button } from "@/components/ui/button";
+import { Terminal, Code2, Globe, Cpu, Smartphone, Lock, ArrowRight, CheckCircle2 } from "lucide-react";
 
-const CodeSnippet = () => (
-    <div className="bg-[#0d1117] rounded-xl border border-white/10 overflow-hidden shadow-2xl">
-        <div className="bg-white/5 px-4 py-2 border-b border-white/10 flex items-center justify-between">
-            <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
-                <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
-                <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
+const CodeSnippet = ({ lang }: { lang: 'js' | 'swift' | 'kotlin' }) => {
+    const code = {
+        js: {
+            file: "auth-handler.ts",
+            lines: [
+                { l: 1, c: "import { MyPassClient } from '@mypass/sdk';", color: "text-purple-400" },
+                { l: 2, c: "" },
+                { l: 3, c: "const mypass = new MyPassClient({", color: "text-blue-300" },
+                { l: 4, c: "  apiKey: process.env.MYPASS_KEY,", color: "text-blue-300" },
+                { l: 5, c: "});", color: "text-blue-300" },
+                { l: 6, c: "" },
+                { l: 7, c: "export const verify = async () => {", color: "text-purple-400" },
+                { l: 8, c: "  const session = await mypass.authenticate({", color: "text-slate-300" },
+                { l: 9, c: "    liveness: '3D_TOPOLOGICAL',", color: "text-emerald-400" },
+                { l: 10, c: "    complexity: 5", color: "text-purple-400" },
+                { l: 11, c: "  });", color: "text-slate-300" },
+                { l: 12, c: "  return session.isValid;", color: "text-slate-300" },
+                { l: 13, c: "};", color: "text-purple-400" }
+            ]
+        },
+        swift: {
+            file: "AuthView.swift",
+            lines: [
+                { l: 1, c: "import MyPassSDK", color: "text-purple-400" },
+                { l: 2, c: "" },
+                { l: 3, c: "let session = MyPass.Session()", color: "text-blue-300" },
+                { l: 4, c: "session.configure { config in", color: "text-blue-300" },
+                { l: 5, c: "  config.mode = .faceMap3D", color: "text-emerald-400" },
+                { l: 6, c: "  config.vocalAuth = true", color: "text-blue-300" },
+                { l: 7, c: "}", color: "text-blue-300" },
+                { l: 8, c: "" },
+                { l: 9, c: "session.start { result in", color: "text-purple-400" },
+                { l: 10, c: "  guard result.isSuccess else { return }", color: "text-slate-300" },
+                { l: 11, c: "  self.navigateToDashboard()", color: "text-slate-300" },
+                { l: 12, c: "}", color: "text-purple-400" }
+            ]
+        },
+        kotlin: {
+            file: "LoginActivity.kt",
+            lines: [
+                { l: 1, c: "import com.mypass.android.sdk.*", color: "text-purple-400" },
+                { l: 2, c: "" },
+                { l: 3, c: "val mypass = MyPass.Builder(this)", color: "text-blue-300" },
+                { l: 4, c: "  .with3DLiveness()", color: "text-blue-300" },
+                { l: 5, c: "  .build()", color: "text-blue-300" },
+                { l: 6, c: "" },
+                { l: 7, c: "mypass.authenticate { status ->", color: "text-purple-400" },
+                { l: 8, c: "  when(status) {", color: "text-slate-300" },
+                { l: 9, c: "    is Success -> grantAccess()", color: "text-emerald-400" },
+                { l: 10, c: "    is Failure -> showRetry()", color: "text-slate-300" },
+                { l: 11, c: "  }", color: "text-slate-300" },
+                { l: 12, c: "}", color: "text-purple-400" }
+            ]
+        }
+    };
+
+    const current = code[lang];
+
+    return (
+        <div className="bg-[#0d1117] rounded-xl border border-white/10 overflow-hidden shadow-2xl">
+            <div className="bg-white/5 px-4 py-2 border-b border-white/10 flex items-center justify-between">
+                <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
+                </div>
+                <span className="text-[10px] text-slate-500 font-mono">{current.file}</span>
             </div>
-            <span className="text-[10px] text-slate-500 font-mono">auth-handler.ts</span>
+            <div className="p-6 font-mono text-xs md:text-sm leading-relaxed overflow-x-auto">
+                {current.lines.map((line) => (
+                    <div key={line.l} className="flex gap-4">
+                        <span className="text-slate-600 select-none w-4 text-right">{line.l}</span>
+                        <span className={line.color || "text-slate-300"}>{line.c}</span>
+                    </div>
+                ))}
+            </div>
         </div>
-        <div className="p-6 font-mono text-sm leading-relaxed">
-            <div className="flex gap-4">
-                <span className="text-slate-600 select-none">1</span>
-                <span className="text-purple-400">import</span> {"{"} <span className="text-blue-300">MyPassClient</span> {"}"} <span className="text-purple-400">from</span> <span className="text-emerald-400">'@mypass/sdk'</span>;
-            </div>
-            <div className="flex gap-4">
-                <span className="text-slate-600 select-none">2</span>
-                <span>&nbsp;</span>
-            </div>
-            <div className="flex gap-4">
-                <span className="text-slate-600 select-none">3</span>
-                <span className="text-purple-400">const</span> <span className="text-blue-300">mypass</span> = <span className="text-purple-400">new</span> <span className="text-yellow-200">MyPassClient</span>({"{"}
-            </div>
-            <div className="flex gap-4">
-                <span className="text-slate-600 select-none">4</span>
-                <span>&nbsp;&nbsp;<span className="text-blue-300">apiKey</span>: <span className="text-purple-400">process</span>.<span className="text-blue-300">env</span>.<span className="text-blue-300">MYPASS_KEY</span>,</span>
-            </div>
-            <div className="flex gap-4">
-                <span className="text-slate-600 select-none">5</span>
-                <span>{"}"});</span>
-            </div>
-            <div className="flex gap-4">
-                <span className="text-slate-600 select-none">6</span>
-                <span>&nbsp;</span>
-            </div>
-            <div className="flex gap-4">
-                <span className="text-slate-600 select-none">7</span>
-                <span className="text-purple-400">export const</span> <span className="text-blue-300">verifySession</span> = <span className="text-purple-400">async</span> () ={">"} {"{"}
-            </div>
-            <div className="flex gap-4">
-                <span className="text-slate-600 select-none">8</span>
-                <span>&nbsp;&nbsp;<span className="text-purple-400">const</span> <span className="text-slate-300">session</span> = <span className="text-purple-400">await</span> <span className="text-blue-300">mypass</span>.<span className="text-yellow-200">authenticate</span>({"{"}</span>
-            </div>
-            <div className="flex gap-4">
-                <span className="text-slate-600 select-none">9</span>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-300">liveness</span>: <span className="text-emerald-400">'3D_TOPOLOGICAL'</span>,</span>
-            </div>
-            <div className="flex gap-4">
-                <span className="text-slate-600 select-none">10</span>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-300">complexity</span>: <span className="text-purple-400">5</span></span>
-            </div>
-            <div className="flex gap-4">
-                <span className="text-slate-600 select-none">11</span>
-                <span>&nbsp;&nbsp;{"}"});</span>
-            </div>
-            <div className="flex gap-4">
-                <span className="text-slate-600 select-none">12</span>
-                <span>&nbsp;</span>
-            </div>
-            <div className="flex gap-4">
-                <span className="text-slate-600 select-none">13</span>
-                <span>&nbsp;&nbsp;<span className="text-purple-400">return</span> <span className="text-slate-300">session</span>.<span className="text-blue-300">isValid</span>;</span>
-            </div>
-            <div className="flex gap-4">
-                <span className="text-slate-600 select-none">14</span>
-                <span>{"}"};</span>
-            </div>
-        </div>
-    </div>
-);
+    );
+};
 
 export const DevPortal = () => {
+    const [activeTab, setActiveTab] = useState<'js' | 'swift' | 'kotlin'>('js');
+
     return (
-        <section className="py-24 px-6 relative">
-            {/* Background accent */}
-            <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[140px] -z-10" />
+        <section id="developer-portal" className="py-34 px-6 relative bg-slate-950 overflow-hidden">
+            {/* Background patterns */}
+            <div className="absolute top-1/2 left-0 w-[800px] h-[800px] bg-cyan-500/5 rounded-full blur-[140px] -z-10" />
+            <div className="absolute bottom-0 right-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent" />
 
             <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div className="order-2 lg:order-1">
-                        <h2 className="text-[10px] font-black uppercase tracking-[.4em] text-cyan-400 mb-6">
-                            Developer Experience (DevEx)
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-21 items-center">
+
+                    <div className="relative">
+                        <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-cyan-400 mb-8 flex items-center gap-3">
+                            <Code2 className="w-4 h-4" />
+                            Developer Experience
                         </h2>
-                        <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-8 max-w-lg">
-                            Integração via API em menos de 10 linhas.
+
+                        <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-8 leading-tight">
+                            A SDK que os <br />
+                            <span className="text-cyan-400">Devs Amam.</span>
                         </h3>
-                        <p className="text-slate-400 text-lg mb-10 leading-relaxed max-w-xl">
-                            Nossa SDK foi desenhada para desenvolvedores que exigem performance e segurança
-                            sem sacrificar a simplicidade. Zero-Trust de ponta a ponta.
+
+                        <p className="text-slate-400 text-lg mb-12 leading-relaxed max-w-xl">
+                            Elimine a complexidade da biometria 3D. Nossa arquitetura foi desenhada por engenheiros, para engenheiros. Integre segurança de nível bancário em minutos.
                         </p>
 
-                        <ul className="space-y-6 mb-12">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-13">
                             {[
-                                { title: 'RESTful APIs', desc: 'Endpoints modernos para gestão de sessões e usuários.' },
-                                { title: 'SDKs Nativos', desc: 'Bibliotecas otimizadas para iOS, Android e Web.' },
-                                { title: 'Zero-Trust Architecture', desc: 'Validação mútua de certificados em cada chamada.' },
+                                { icon: <Globe className="w-4 h-4" />, title: "Web (React/Vue/TS)", desc: "SDK completa com hooks e gerenciamento de estado." },
+                                { icon: <Smartphone className="w-4 h-4" />, title: "Native iOS & Android", desc: "Aproveite 100% da performance do hardware facial." },
+                                { icon: <Cpu className="w-4 h-4" />, title: "Edge Processing", desc: "Criptografia local antes de qualquer envio de dados." },
+                                { icon: <Lock className="w-4 h-4" />, title: "Mutual Auth (mTLS)", desc: "Segurança total no canal de comunicação." },
                             ].map((item, i) => (
-                                <li key={i} className="flex gap-4">
-                                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                                <div key={i} className="space-y-3">
+                                    <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                                        {item.icon}
                                     </div>
-                                    <div>
-                                        <h4 className="font-bold text-white text-sm">{item.title}</h4>
-                                        <p className="text-slate-500 text-xs">{item.desc}</p>
-                                    </div>
-                                </li>
+                                    <h4 className="font-bold text-white text-sm">{item.title}</h4>
+                                    <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+                                </div>
                             ))}
-                        </ul>
-
-                        <div className="p-1 glass rounded-2xl inline-block group">
-                            <button className="px-8 py-4 bg-white text-slate-950 font-bold rounded-xl hover:bg-slate-200 transition-all flex items-center gap-3">
-                                Solicitar API Keys de Sandbox
-                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </button>
                         </div>
-                        <p className="mt-4 text-[10px] text-slate-600 font-bold uppercase tracking-widest pl-2">
-                            Requer e-mail corporativo & Perfil GitHub
-                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-5">
+                            <Button className="bg-white text-slate-950 hover:bg-slate-200 font-black uppercase tracking-widest text-xs h-14 px-10 rounded-2xl">
+                                Acessar Sandbox Dev
+                                <ArrowRight className="ml-2 w-4 h-4" />
+                            </Button>
+                            <Button variant="outline" className="border-white/10 text-white hover:bg-white/5 font-black uppercase tracking-widest text-xs h-14 px-10 rounded-2xl">
+                                Documentação API
+                            </Button>
+                        </div>
                     </div>
 
-                    <div className="order-1 lg:order-2">
-                        <div className="relative group">
-                            <div className="absolute -inset-8 bg-cyan-500/20 blur-[55px] -z-10 animate-pulse-slow" />
+                    <div className="relative">
+                        <div className="absolute -inset-10 bg-cyan-500/10 blur-[80px] -z-10 animate-pulse" />
 
-                            {/* Fibonacci Frame (px): 377 x 610 or similar aspect ratio */}
-                            <div className="relative rounded-[34px] overflow-hidden border border-white/10 shadow-[0_21px_55px_rgba(0,0,0,0.8)] bg-slate-900 group-hover:border-cyan-500/30 transition-colors duration-500">
-                                <Image
-                                    src="/assets/images/engineering-hardware.png"
-                                    alt="Engineering Hardware"
-                                    width={800}
-                                    height={500}
-                                    className="w-full h-auto object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60" />
-
-                                {/* Overlay scan effect */}
-                                <div className="absolute inset-x-0 h-[2px] bg-cyan-400/50 shadow-[0_0_13px_rgba(34,211,238,0.5)] animate-scan top-0" />
+                        {/* Tabbed Terminal Interface */}
+                        <div className="relative glass rounded-[34px] border-white/10 overflow-hidden shadow-2xl">
+                            <div className="flex items-center bg-white/5 border-b border-white/10 px-6 py-4">
+                                <div className="flex gap-5 mr-auto">
+                                    {(['js', 'swift', 'kotlin'] as const).map((tab) => (
+                                        <button
+                                            key={tab}
+                                            onClick={() => setActiveTab(tab)}
+                                            className={`text-[10px] font-black uppercase tracking-widest transition-all ${activeTab === tab ? 'text-cyan-400 border-b-2 border-cyan-400 pb-1' : 'text-slate-500 hover:text-white'
+                                                }`}
+                                        >
+                                            {tab === 'js' ? 'TypeScript' : tab === 'swift' ? 'Swift (iOS)' : 'Kotlin (Android)'}
+                                        </button>
+                                    ))}
+                                </div>
+                                <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400">
+                                    <Terminal className="w-3 h-3" />
+                                    <span>Interactive Playground</span>
+                                </div>
                             </div>
 
-                            {/* Floating Snippet (Fibonacci Pos: 55px offset) */}
-                            <div className="absolute -bottom-8 -left-8 w-72 transform group-hover:-translate-y-3 transition-transform duration-500">
-                                <CodeSnippet />
+                            <div className="p-1">
+                                <CodeSnippet lang={activeTab} />
                             </div>
 
-                            {/* Floating Badge (Fibonacci Pos: 34px offset) */}
-                            <div className="absolute top-8 -right-8 glass p-5 rounded-[13px] shadow-[0_8px_21px_rgba(0,0,0,0.5)] animate-float-delayed border-white/5 bg-black/40">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded bg-cyan-500/20 flex items-center justify-center border border-cyan-500/30 shadow-[0_0_8px_rgba(6,182,212,0.2)]">
-                                        <span className="text-cyan-400 font-mono text-[10px] font-black tracking-tighter">SDK</span>
+                            {/* Status Bar */}
+                            <div className="px-6 py-4 bg-black/40 border-t border-white/5 flex flex-wrap gap-6 items-center">
+                                <div className="flex items-center gap-2">
+                                    <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">v2.4.0 Stable</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Sandbox Online</span>
+                                </div>
+                                <div className="ml-auto text-cyan-400 text-[10px] font-bold italic">
+                                    docs.mypass.tech/quickstart
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Floating Fibonacci Badge */}
+                        <div className="absolute top-1/2 -right-8 glass p-6 rounded-3xl shadow-2xl border-white/10 backdrop-blur-xl translate-y-12 animate-float hidden md:block">
+                            <div className="space-y-5">
+                                <div className="text-[8px] font-black text-cyan-400 uppercase tracking-[0.2em]">Security Audit</div>
+                                <div className="flex flex-col gap-3">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                        <span className="text-xs font-bold text-white tracking-tight">Zero-Trust Verified</span>
                                     </div>
-                                    <div>
-                                        <div className="text-[8px] text-slate-500 font-black uppercase tracking-[0.13em]">Latency (Topological)</div>
-                                        <div className="text-xs font-black text-white tracking-widest">{"<"} 240ms</div>
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                        <span className="text-xs font-bold text-white tracking-tight">ISO 30107-3 compliant</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
