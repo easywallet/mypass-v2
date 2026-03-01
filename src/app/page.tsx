@@ -12,9 +12,9 @@ const Navbar = () => (
         <Image
           src="/assets/logos/mypass-logo.png"
           alt="MyPass Logo"
-          width={233}
-          height={55}
-          className="h-[55px] w-auto drop-shadow-[0_0_13px_rgba(52,211,153,0.2)]"
+          width={350}
+          height={82}
+          className="h-[82px] w-auto drop-shadow-[0_0_13px_rgba(52,211,153,0.2)]"
           priority
         />
       </div>
@@ -41,9 +41,9 @@ const Footer = () => (
           <Image
             src="/assets/logos/mypass-logo.png"
             alt="MyPass Logo"
-            width={233}
-            height={55}
-            className="h-[55px] w-auto opacity-80 hover:opacity-100 transition-opacity"
+            width={350}
+            height={82}
+            className="h-[82px] w-auto opacity-80 hover:opacity-100 transition-opacity"
           />
         </div>
         <p className="text-slate-500 max-w-sm text-sm leading-relaxed mb-8">
