@@ -35,8 +35,8 @@ export const ContactForm = () => {
                                 <div className="flex items-center gap-4">
                                     <div className="w-12 h-12 rounded-full bg-slate-800 border border-white/10" />
                                     <div>
-                                        <div className="text-sm font-bold text-white">Chief Information Security Officer</div>
-                                        <div className="text-xs text-slate-500 font-bold uppercase tracking-tight">Fintech Tier 1</div>
+                                        <div className="text-sm font-bold text-white">Case disponível mediante NDA</div>
+                                        <div className="text-xs text-slate-500 font-bold uppercase tracking-tight">Fintech Tier 1, Brasil</div>
                                     </div>
                                 </div>
                             </div>

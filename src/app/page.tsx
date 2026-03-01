@@ -48,7 +48,7 @@ const Footer = () => (
           />
         </div>
         <p className="text-slate-500 max-w-sm text-sm leading-relaxed mb-8">
-          Líder global em infraestrutura de identidade determinística 3D.
+          Infraestrutura de Identidade Soberana para o mercado brasileiro.
           Protegendo ativos críticos com tecnologia certificada pela Praetorian.
         </p>
       </div>
