@@ -12,11 +12,12 @@ const Navbar = () => (
       <div className="flex items-center gap-3">
         <Image
           src="/assets/logos/mypass-logo.png"
-          alt="MyPass Logo"
+          alt="MyPass Logo - Identidade Digital Soberana"
           width={350}
           height={82}
           className="h-[82px] w-auto drop-shadow-[0_0_13px_rgba(52,211,153,0.2)]"
           priority
+          loading="eager"
         />
       </div>
 
@@ -41,10 +42,11 @@ const Footer = () => (
         <div className="flex items-center gap-3 mb-8">
           <Image
             src="/assets/logos/mypass-logo.png"
-            alt="MyPass Logo"
+            alt="MyPass Logo Footer - Infraestrutura de Identidade"
             width={350}
             height={82}
             className="h-[82px] w-auto opacity-80 hover:opacity-100 transition-opacity"
+            loading="lazy"
           />
         </div>
         <p className="text-slate-500 max-w-sm text-sm leading-relaxed mb-8">

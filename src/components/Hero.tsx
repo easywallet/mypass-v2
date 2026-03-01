@@ -11,11 +11,12 @@ const HeroVisual = () => (
 
     <div className="relative w-full h-full flex items-center justify-center">
       <Image
-        src="/assets/images/hero-face.png"
-        alt="Identidade Determinística MyPass"
+        src="/assets/images/hero-face.webp"
+        alt="Validação Biométrica 3D da MyPass - Tecnologia Determinística"
         fill
         className="object-contain opacity-90 drop-shadow-[0_0_80px_rgba(34,211,238,0.2)]"
         priority
+        loading="eager"
       />
 
       {/* Scanning effect Overlay */}

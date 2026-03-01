@@ -15,10 +15,11 @@ const CertificationCard = ({ title, subtitle, badgePath, level }: { title: strin
             {/* Fallback to text if image fails or path is wrong */}
             <Image
                 src={badgePath}
-                alt={title}
+                alt={`Selo de Certificação Técnica: ${title}`}
                 width={200}
                 height={60}
                 className="object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+                loading="lazy"
             />
         </div>
 
@@ -65,12 +66,14 @@ export const Certifications = () => {
                         subtitle="Certificação máxima contra ataques de injeção e bypass biométrico (Level 4 & 5)."
                         badgePath="/assets/certificates/praetorian.png"
                         level="LEVEL 4 & 5"
+                    // Added descriptive alt text via title mapping inside component
                     />
                     <CertificationCard
                         title="iBeta Quality Assurance"
                         subtitle="Conformidade total com os padrões ISO 30107-3 para detecção de ataques de apresentação (PAD)."
                         badgePath="/assets/certificates/ibeta.png"
                         level="LEVEL 2 COMPLIANT"
+                    // Alt text inherits from title
                     />
                 </div>
 

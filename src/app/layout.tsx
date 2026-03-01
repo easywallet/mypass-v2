@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://mypass-v2.vercel.app",
   },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     title: "MyPass | Identidade Digital Soberana",
     description: "Seu Rosto. Seu Token. Seu Controle. Infraestrutura de identidade biométrica para o mercado brasileiro.",
