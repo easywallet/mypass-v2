@@ -79,7 +79,7 @@ const Footer = () => (
         © 2026 MyPass Identity Systems. All Rights Reserved.
       </p>
       <div className="flex gap-8">
-        <span className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.13em]">Built for Nasdaq Standards</span>
+        <span className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.13em]">CONSTRUÍDA PARA O MERCADO BRASILEIRO</span>
       </div>
     </div>
   </footer>
