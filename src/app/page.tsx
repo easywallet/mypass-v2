@@ -4,6 +4,7 @@ import { Certifications } from '@/components/Certifications';
 import { BentoGrid } from '@/components/BentoGrid';
 import { DevPortal } from '@/components/DevPortal';
 import { ContactForm } from '@/components/ContactForm';
+import { UnifiedJourneySection } from '@/components/UnifiedJourneySection';
 
 const Navbar = () => (
   <nav className="fixed top-0 inset-x-0 z-50 px-5 py-5 md:px-8">
@@ -90,6 +91,7 @@ export default function Home() {
       <div className="fixed inset-0 bg-radial-gradient opacity-50 pointer-events-none" />
       <Navbar />
       <Hero />
+      <UnifiedJourneySection />
       <Certifications />
       <BentoGrid />
       <DevPortal />
