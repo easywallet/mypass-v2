@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabase';
 
 export const dynamic = 'force-dynamic';
 
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
         }
 
-        const { data, error } = await supabase
+        const { data, error } = await supabaseAdmin
             .from('developer_signups')
             .insert([
                 {
