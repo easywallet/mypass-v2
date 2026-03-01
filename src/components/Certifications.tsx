@@ -86,9 +86,9 @@ export const Certifications = () => {
                             <p className="text-slate-400 text-sm">Resiliência absoluta contra ataques injetados de Nível 4 e 5.</p>
                         </div>
                     </div>
-                    <button className="px-6 py-3 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold rounded-lg hover:bg-emerald-500/20 transition-all">
-                        Ver Certificado Oficial (PDF)
-                    </button>
+                    <a href="#contato-enterprise" className="px-6 py-3 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold rounded-lg hover:bg-emerald-500/20 transition-all">
+                        Solicitar Certificado via Demo
+                    </a>
                 </div>
             </div>
         </section>

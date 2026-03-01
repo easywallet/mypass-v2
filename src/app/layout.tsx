@@ -13,8 +13,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "MyPass | Identidade Determinística",
-  description: "A única tecnologia de biometria certificada pela Praetorian contra ataques de injeção Nível 4 e 5.",
+  title: "MyPass | Identidade Digital Soberana",
+  description: "Uma validação biométrica de Nível 4 reconhecida em qualquer banco, hospital ou evento no Brasil. 100% determinística. Powered by FaceTec + Praetorian.",
 };
 
 export default function RootLayout({

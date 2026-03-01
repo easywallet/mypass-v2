@@ -156,8 +156,8 @@ export const ContactForm = () => {
                             <button
                                 onClick={() => { setActiveForm('b2b'); setSuccess(false); }}
                                 className={`flex-1 py-4 px-6 rounded-2xl border transition-all flex items-center justify-center gap-3 font-black uppercase tracking-widest text-[10px] ${activeForm === 'b2b'
-                                        ? 'bg-emerald-500 border-emerald-400 text-slate-950 shadow-[0_10px_20px_rgba(16,185,129,0.2)]'
-                                        : 'bg-white/5 border-white/10 text-slate-500 hover:text-white hover:bg-white/10'
+                                    ? 'bg-emerald-500 border-emerald-400 text-slate-950 shadow-[0_10px_20px_rgba(16,185,129,0.2)]'
+                                    : 'bg-white/5 border-white/10 text-slate-500 hover:text-white hover:bg-white/10'
                                     }`}
                             >
                                 <ShieldCheck className="w-4 h-4" />
@@ -166,8 +166,8 @@ export const ContactForm = () => {
                             <button
                                 onClick={() => { setActiveForm('dev'); setSuccess(false); }}
                                 className={`flex-1 py-4 px-6 rounded-2xl border transition-all flex items-center justify-center gap-3 font-black uppercase tracking-widest text-[10px] ${activeForm === 'dev'
-                                        ? 'bg-cyan-500 border-cyan-400 text-slate-950 shadow-[0_10px_20px_rgba(6,182,212,0.2)]'
-                                        : 'bg-white/5 border-white/10 text-slate-500 hover:text-white hover:bg-white/10'
+                                    ? 'bg-cyan-500 border-cyan-400 text-slate-950 shadow-[0_10px_20px_rgba(6,182,212,0.2)]'
+                                    : 'bg-white/5 border-white/10 text-slate-500 hover:text-white hover:bg-white/10'
                                     }`}
                             >
                                 <Code2 className="w-4 h-4" />
@@ -203,7 +203,12 @@ export const ContactForm = () => {
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <FormField label="Empresa" placeholder="Sua organização" required />
-                                        <FormField label="Cargo" placeholder="Ex: Diretor de Compliance" required />
+                                        <FormField
+                                            label="Cargo"
+                                            placeholder="Selecione seu cargo"
+                                            options={["CEO", "CTO", "CISO", "Head de Produto", "Diretor", "Outro"]}
+                                            required
+                                        />
                                     </div>
                                     <FormField
                                         label="Segmento"

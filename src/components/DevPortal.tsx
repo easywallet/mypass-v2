@@ -178,9 +178,9 @@ export const DevPortal = () => {
                                     <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Sandbox Online</span>
                                 </div>
-                                <div className="ml-auto text-cyan-400 text-[10px] font-bold italic">
-                                    docs.mypass.tech/quickstart
-                                </div>
+                                <a href="#developer-portal" className="ml-auto text-cyan-400 text-[10px] font-bold italic hover:underline">
+                                    #developer-portal
+                                </a>
                             </div>
                         </div>
 

@@ -69,7 +69,7 @@ const Footer = () => (
           <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">iBeta Level 1 & 2</a></li>
           <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">ISO 30107-3</a></li>
           <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Praetorian Level 4/5</a></li>
-          <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">SOC 2 Type II</a></li>
+          <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">LGPD Art. 46</a></li>
         </ul>
       </div>
     </div>
