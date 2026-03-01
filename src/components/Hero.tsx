@@ -11,7 +11,7 @@ const HeroVisual = () => (
 
     <div className="relative w-full h-full flex items-center justify-center">
       <Image
-        src="/assets/images/hero-face.webp"
+        src="/assets/images/hero-face.png"
         alt="Validação Biométrica 3D da MyPass - Tecnologia Determinística"
         fill
         className="object-contain opacity-90 drop-shadow-[0_0_80px_rgba(34,211,238,0.2)]"

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { ShieldCheck } from 'lucide-react';
 
 const CertificationCard = ({ title, subtitle, badgePath, level }: { title: string, subtitle: string, badgePath: string, level?: string }) => (
     <div className="group relative glass p-8 rounded-2xl transition-all duration-500 hover:shadow-[0_0_50px_rgba(16,185,129,0.15)] hover:bg-white/10 border-white/10 hover:border-emerald-500/30">
@@ -80,9 +81,7 @@ export const Certifications = () => {
                 <div className="mt-16 glass p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-8 border-emerald-500/10">
                     <div className="flex items-center gap-6">
                         <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
-                            <svg className="w-8 h-8 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04logaM12 21.355r-1.188-1.108C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.75L12 21.35z" />
-                            </svg>
+                            <ShieldCheck className="w-8 h-8 text-emerald-400" />
                         </div>
                         <div>
                             <h4 className="text-xl font-bold text-white">Auditoria Praetorian Security</h4>
