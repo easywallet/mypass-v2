@@ -41,7 +41,7 @@ const HeroVisual = () => (
 
 export const Hero = () => {
   return (
-    <section className="relative pt-32 pb-20 px-6 overflow-hidden min-h-[90vh] flex flex-col justify-center">
+    <section className="relative pt-55 pb-20 px-6 overflow-hidden min-h-screen flex flex-col justify-center">
       {/* Background radial glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-500/10 rounded-full blur-[140px] -z-10 pointer-events-none" />
 
