@@ -14,15 +14,11 @@ const Navbar = () => (
   <nav className="fixed top-0 inset-x-0 z-50 px-5 py-5 md:px-8">
     <div className="max-w-7xl mx-auto flex items-center justify-between glass px-8 py-5 rounded-[21px] border-white/5 shadow-[0_13px_34px_rgba(0,0,0,0.5)]">
       <div className="flex items-center gap-3">
-        <Image
+        <img
           src="/assets/logos/mypass-logo.png"
           alt="MyPass Logo - Identidade Digital Soberana"
-          height={38}
-          width={0}
-          style={{ width: 'auto', height: '38px' }}
-          className="drop-shadow-[0_0_13px_rgba(52,211,153,0.2)]"
-          priority
-          loading="eager"
+          style={{ height: '70px', width: 'auto' }}
+          className="drop-shadow-[0_0_13px_rgba(52,211,153,0.2)] object-contain"
         />
       </div>
 
