@@ -23,7 +23,7 @@ const BentoCard = ({ title, description, icon, category, className, ctaText = "S
             </div>
 
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{title}</h3>
-            <p className="text-sm text-slate-400 leading-relaxed mt-2 mb-8 flex-grow">{description}</p>
+            <p className="text-sm text-slate-400 card-description mt-2 mb-8 flex-grow">{description}</p>
 
             <Button
                 variant="ghost"

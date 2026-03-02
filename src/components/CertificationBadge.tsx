@@ -58,8 +58,8 @@ export function CertificationBadge({ certId, variant = "badge", className = "" }
                     </div >
 
                     <h4 className="text-xl font-bold text-white mb-2">{cert.badge}</h4>
-                    <p className="text-sm text-slate-400 mb-6 flex-1 line-clamp-3">
-                        {cert.resumoExecutivo.split('\\n')[0]} {/* Pega apenas primeiro paragrafo para o card */}
+                    <p className="text-sm text-slate-400 card-description prose-body mt-3 mb-6 flex-1 line-clamp-3">
+                        {cert.resumoExecutivo.split('\n')[0]} {/* Pega apenas primeiro paragrafo para o card */}
                     </p>
 
                     <div className="flex items-center gap-2 text-sm font-medium mt-auto transition-colors" style={{ color: cert.accentColor }}>

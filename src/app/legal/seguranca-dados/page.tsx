@@ -16,7 +16,7 @@ export default function SegurancaDados() {
                 <div className="bg-[#0f0f1f] border border-[#1e293b] p-8 rounded-2xl relative overflow-hidden">
                     <Cpu className="w-10 h-10 text-emerald-400 mb-6 relative z-10" />
                     <h3 className="text-xl font-bold text-white mb-3 relative z-10">O Motor FaceMap 3D™</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed relative z-10">
+                    <p className="text-slate-400 text-sm leading-relaxed relative z-10 legal-text">
                         A FaceTec abstrai a imagem da câmera em tempo real para uma malha 3D. O processamento gera um vetor alfanumérico irreversível. A engenharia reversa para obter um rosto plano a partir de um FaceMap é matematicamente impossível.
                     </p>
                     <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-emerald-500/5 blur-3xl rounded-full pointer-events-none" />
@@ -25,7 +25,7 @@ export default function SegurancaDados() {
                 <div className="bg-[#0f0f1f] border border-[#1e293b] p-8 rounded-2xl relative overflow-hidden">
                     <Bug className="w-10 h-10 text-emerald-400 mb-6 relative z-10" />
                     <h3 className="text-xl font-bold text-white mb-3 relative z-10">Programa de Anti-Spoofing ($600k)</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed relative z-10">
+                    <p className="text-slate-400 text-sm leading-relaxed relative z-10 legal-text">
                         Nossa suíte herda o robusto programa de Bug Bounty da FaceTec de 600 mil dólares. Hackers globais testam a barreira Liveness diariamente. A taxa de PAD (Presentation Attack Detection) da MyPass é certificadamente zero para artefatos 2D e 3D.
                     </p>
                     <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-emerald-500/5 blur-3xl rounded-full pointer-events-none" />
@@ -45,7 +45,7 @@ export default function SegurancaDados() {
                     </div>
                     <div>
                         <h4 className="text-white font-bold mb-2">Cluster 100% On-Shore (Brasil)</h4>
-                        <p className="text-slate-400 text-sm">
+                        <p className="text-slate-400 text-sm legal-text">
                             Toda a malha de autenticação API da MyPass, as tabelas de referência temporal e o processamento de Liveness Active Edge ocorrem em data centers em território nacional, erradicando o risco de soberania e obedecendo o princípio de territorialidade exigido por instituições governamentais e financeiras de altíssimo bloqueio.
                         </p>
                     </div>

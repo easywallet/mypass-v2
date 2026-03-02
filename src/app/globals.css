@@ -25,6 +25,7 @@
     -moz-osx-font-smoothing: grayscale;
     @apply bg-background text-foreground;
   }
+
   * {
     @apply border-border outline-ring/50;
   }
@@ -219,25 +220,26 @@
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
 }
 
-/* Tipografia base enterprise */
-p, li, td {
+.prose-body {
   line-height: 1.6;
   text-align: justify;
   text-justify: inter-word;
 }
 
-h1, h2 { line-height: 1.15; }
-h3, h4 { line-height: 1.25; }
+.card-description {
+  line-height: 1.6;
+}
 
-/* Exceções — não justificar */
-.text-center, 
-nav, 
-button, 
-.badge,
-.metric-value {
-  text-align: unset;
+.legal-text {
+  line-height: 1.6;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.footer-legal-block {
+  line-height: 1.6;
+  text-align: justify;
+  text-justify: inter-word;
 }

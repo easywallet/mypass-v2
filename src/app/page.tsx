@@ -113,7 +113,7 @@ const Footer = () => (
               LGPD COMPLIANT &middot; PRAETORIAN CERTIFIED
             </span>
           </div>
-          <p className="text-xs text-slate-500 leading-relaxed text-justify max-w-3xl mx-auto mt-4">
+          <p className="text-xs text-slate-500 max-w-3xl mx-auto mt-4 footer-legal-block">
             A MyPass opera em total conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).
             Nossa infraestrutura biométrica é certificada pelos laboratórios independentes iBeta (NIST/NVLAP)
             e Praetorian Security, com APCER de 0% em todos os níveis de teste. O tratamento de dados

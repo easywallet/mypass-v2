@@ -53,7 +53,7 @@ export default function PrivacidadeResumida() {
             </div>
 
             <div className="mt-16 text-center border-t border-white/10 pt-12">
-                <p className="text-slate-400 text-sm">
+                <p className="text-slate-400 text-sm legal-text">
                     Acha que precisa de mais detalhes? Sem problemas. <br />
                     Leia nossa <a href="/legal/politica-privacidade" className="text-emerald-400 hover:text-emerald-300 font-bold">Política de Privacidade Jurídica Completa</a>.
                 </p>

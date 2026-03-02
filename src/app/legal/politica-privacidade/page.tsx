@@ -37,7 +37,7 @@ export default function PoliticaPrivacidade() {
                         <li><strong>Dados biométricos avançados:</strong> Leitura facial transformada em FaceMap 3D (criptografia irreversível).</li>
                         <li><strong>Dados de acesso:</strong> Logs de auditoria, metadados de dispositivo e verificação de vivacidade (Liveness).</li>
                     </ul>
-                    <p className="mt-4">
+                    <p className="mt-4 legal-text">
                         <strong>Finalidade:</strong> Execução de processos de KYC (Know Your Customer), autenticação contínua e prevenção massiva contra fraudes de injeção e Account Takeover.
                     </p>
                 </li>
@@ -93,7 +93,7 @@ export default function PoliticaPrivacidade() {
                         <li>Correção de dados incompletos ou inexatos;</li>
                         <li>Anonimização, bloqueio ou eliminação do armazenamento ativo.</li>
                     </ul>
-                    <p className="mt-4">
+                    <p className="mt-4 legal-text">
                         Para exercer seus direitos instantaneamente, acesse nosso <a href="/legal/direitos-dos-titulares">Portal de Solicitações LGPD</a>.
                     </p>
                 </li>

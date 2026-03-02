@@ -59,7 +59,7 @@ export default function DireitosDosTitulares() {
                         </div>
                         <div>
                             <h4 className="text-2xl font-bold text-white mb-2">Protocolo Registrado</h4>
-                            <p className="text-slate-400 max-w-sm mx-auto">
+                            <p className="text-slate-400 max-w-sm mx-auto legal-text">
                                 Sua requisição de Direitos de Titular foi cifrada e enviada à mesa do nosso DPO. Você receberá atualizações no email informado em breve.
                             </p>
                         </div>

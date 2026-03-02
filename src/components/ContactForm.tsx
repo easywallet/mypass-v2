@@ -142,7 +142,7 @@ export const ContactForm = () => {
                     <div className="flex flex-col justify-center">
                         <div className="space-y-12">
                             <div className="relative glass p-8 rounded-3xl border-l-4 border-l-emerald-400">
-                                <p className="text-base italic text-slate-300 mb-8 leading-loose text-justify">
+                                <p className="text-base italic text-slate-300 mb-8 prose-body">
                                     "A MyPass removeu completamente o risco de Account Takeover na nossa plataforma de Wealth Management. Em menos de 2 segundos, validamos identidades com precisão absoluta."
                                 </p>
                                 <div className="flex items-center gap-4">

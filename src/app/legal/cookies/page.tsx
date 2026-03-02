@@ -16,7 +16,7 @@ export default function CookiesPolicy() {
                 <Cookie className="w-10 h-10 text-emerald-400 flex-shrink-0" />
                 <div>
                     <h3 className="text-white font-bold mb-1">Zero Cookies de Marketing</h3>
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-slate-400 legal-text">
                         Diferente das Big Techs, nós não monitoramos a sua navegação secundária, rastreadores cruzados institucionais (cross-site tracking), nem rodamos scripts do Facebook Pixel ou Google Ads.
                     </p>
                 </div>
