@@ -62,9 +62,9 @@ export async function POST(req: Request) {
                 subject: `🔔 Novo Dev Cadastrado — ${empresa} | ${segmento}`,
                 html: alertHtml
             });
-        } catch (emailError) {
+        } catch (emailError: any) {
             console.error('Email dispatch failed (silent error):', emailError);
-            // DO NOT THROW, DO NOT RETURN 500
+            return NextResponse.json({ success: false, error: 'SMTP Error: ' + emailError.message, details: emailError.stack }, { status: 500 });
         }
         // -----------------------------
 
