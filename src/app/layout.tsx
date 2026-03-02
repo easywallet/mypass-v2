@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Inter } from "next/font/google";
 import "./globals.css";
+import { CookieBanner } from "@/components/CookieBanner";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -59,6 +60,7 @@ export default function RootLayout({
         className={`${geist.variable} ${inter.variable} font-inter antialiased overflow-x-hidden`}
       >
         {children}
+        <CookieBanner />
       </body>
     </html>
   );

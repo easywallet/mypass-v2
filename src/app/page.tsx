@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Hero } from '@/components/Hero';
 import { Certifications } from '@/components/Certifications';
 import { BentoGrid } from '@/components/BentoGrid';
@@ -39,53 +40,96 @@ const Navbar = () => (
 );
 
 const Footer = () => (
-  <footer className="relative z-20 py-34 px-8 border-t border-white/5 bg-slate-950">
-    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-13">
-      <div className="col-span-2">
-        <div className="flex items-center gap-3 mb-8">
+  <footer className="relative z-20 pt-24 pb-12 px-5 md:px-8 border-t border-white/10 bg-[#05050a]">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 xl:gap-16 mb-24">
+
+      {/* Coluna 1 — MYPASS */}
+      <div className="lg:pr-8">
+        <div className="flex items-center gap-3 mb-6">
           <Image
             src="/assets/logos/mypass-logo.png"
             alt="MyPass Logo Footer - Infraestrutura de Identidade"
             width={350}
             height={82}
-            className="h-[82px] w-auto opacity-80 hover:opacity-100 transition-opacity"
+            className="h-[60px] w-auto opacity-90 transition-opacity"
             loading="lazy"
           />
         </div>
-        <p className="text-slate-500 max-w-sm text-sm leading-relaxed mb-8">
+        <p className="text-slate-400 text-sm leading-relaxed mb-8">
           Infraestrutura de Identidade Soberana para o mercado brasileiro.
-          Protegendo ativos críticos com tecnologia certificada pela Praetorian.
         </p>
+        <div className="inline-flex items-center border border-emerald-500/20 bg-emerald-500/5 px-3 py-1.5 rounded-full">
+          <span className="text-[10px] font-bold text-emerald-400 tracking-widest uppercase">
+            LGPD COMPLIANT &middot; BACEN 2026 READY
+          </span>
+        </div>
       </div>
 
+      {/* Coluna 2 — EMPRESA */}
       <div>
-        <h4 className="text-[10px] font-black uppercase tracking-[0.21em] text-white mb-8">Empresa</h4>
-        <ul className="space-y-5">
-          <li><a href="#jornada" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Sobre Nós</a></li>
-          <li><a href="mailto:carreiras@mypass.com.br" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Carreiras</a></li>
-          <li><a href="#compliance" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Compliance</a></li>
-          <li><a href="#compliance" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Privacidade</a></li>
+        <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Empresa</h4>
+        <ul className="space-y-4">
+          <li><Link href="/sobre" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Sobre Nós</Link></li>
+          <li><Link href="/compliance" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Compliance</Link></li>
+          <li><a href="#compliance" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Certificações</a></li>
+          <li><Link href="/carreiras" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Carreiras</Link></li>
         </ul>
       </div>
 
+      {/* Coluna 3 — DESENVOLVEDORES */}
       <div>
-        <h4 className="text-[10px] font-black uppercase tracking-[0.21em] text-white mb-8">Legal</h4>
-        <ul className="space-y-5">
-          <li><CertificationBadge certId="ibeta-level-1" variant="link" /></li>
-          <li><CertificationBadge certId="ibeta-level-2" variant="link" /></li>
-          <li><CertificationBadge certId="praetorian-level-4" variant="link" /></li>
-          <li><CertificationBadge certId="praetorian-blackbox" variant="link" /></li>
-          <li><LGPDModal /></li>
+        <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Desenvolvedores</h4>
+        <ul className="space-y-4">
+          <li><a href="mailto:sandbox@mypass.com.br" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Documentação API</a></li>
+          <li><a href="#developer-portal" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Acessar Sandbox</a></li>
+          <li><a href="#casos-de-uso" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Casos de Uso</a></li>
+          <li><span className="text-sm text-slate-600 block mt-2">Parceiro Tecnológico: FaceTec</span></li>
         </ul>
       </div>
+
+      {/* Coluna 4 — LEGAL & COMPLIANCE */}
+      <div>
+        <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Legal & Compliance</h4>
+        <ul className="space-y-4">
+          <li><Link href="/legal/politica-privacidade" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Política de Privacidade</Link></li>
+          <li><Link href="/legal/privacidade-resumida" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Resumo de Privacidade</Link></li>
+          <li><Link href="/legal/direitos-dos-titulares" className="text-sm text-emerald-400 font-medium hover:text-emerald-300 transition-colors bg-emerald-400/10 px-2 py-0.5 rounded -ml-2">Exercer Meus Direitos (LGPD)</Link></li>
+          <li><Link href="/legal/seguranca-dados" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Segurança de Dados</Link></li>
+          <li><Link href="/legal/cookies" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Política de Cookies</Link></li>
+          <li><Link href="/legal/termos-de-uso" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Termos de Uso</Link></li>
+        </ul>
+      </div>
+
     </div>
 
-    <div className="max-w-7xl mx-auto mt-21 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-5">
-      <p className="text-[10px] text-slate-500 font-bold tracking-[0.1em]">
-        © 2026 MyPass · Todos os direitos reservados.
-      </p>
-      <div className="flex gap-8">
-        <span className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.13em]">CONSTRUÍDA PARA O MERCADO BRASILEIRO</span>
+    {/* Rodapé Inferior (Bloco de Conformidade) */}
+    <div className="max-w-7xl mx-auto pt-10 border-t border-[#1e293b]">
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-16">
+
+        {/* Textos Jurídigos */}
+        <div className="flex-1 max-w-4xl">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">
+              LGPD COMPLIANT &middot; PRAETORIAN CERTIFIED
+            </span>
+          </div>
+          <p className="text-xs text-slate-500 leading-relaxed text-justify md:text-left">
+            A MyPass opera em total conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).
+            Nossa infraestrutura biométrica é certificada pelos laboratórios independentes iBeta (NIST/NVLAP)
+            e Praetorian Security, com APCER de 0% em todos os níveis de teste. O tratamento de dados
+            biométricos segue rigorosamente os Arts. 11 e 46 da LGPD, com Privacy by Design nativo —
+            nenhuma imagem facial é armazenada em texto plano.
+          </p>
+        </div>
+
+        {/* Copyright */}
+        <div className="flex-shrink-0 text-left lg:text-right">
+          <p className="text-[11px] text-slate-400 font-medium">
+            © 2026 MyPass <br className="hidden lg:block" />
+            <span className="lg:hidden">&middot;</span> Todos os direitos reservados.
+          </p>
+        </div>
+
       </div>
     </div>
   </footer>

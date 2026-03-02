@@ -529,3 +529,79 @@ export function getEnterpriseInternalAlertEmail(data: {
     `mailto:${data.email}?subject=MyPass — Sua Demo foi agendada, ${data.nome}!`
   );
 }
+
+export function getLGPDSolicitationEmail(data: {
+  tipo: string;
+  nome: string;
+  email: string;
+  cpf: string;
+  descricao: string;
+  created_at: string;
+}) {
+  const bodyContent = `
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #0f0f1f; border: 1px solid #1e293b; border-radius: 13px;">
+      <tr>
+        <td width="35%" valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 13px; font-weight: 600; color: #f8fafc; text-transform: uppercase;">
+          Tipo
+        </td>
+        <td width="65%" valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 14px; color: #e2e8f0; font-weight: 700;">
+          ${data.tipo}
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 13px; font-weight: 600; color: #f8fafc; text-transform: uppercase;">
+          Titular
+        </td>
+        <td valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 14px; color: #94a3b8;">
+          ${data.nome}
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 13px; font-weight: 600; color: #f8fafc; text-transform: uppercase;">
+          E-mail
+        </td>
+        <td valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 14px; color: #94a3b8;">
+          ${data.email}
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 13px; font-weight: 600; color: #f8fafc; text-transform: uppercase;">
+          CPF
+        </td>
+        <td valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 14px; color: #94a3b8; font-family: monospace;">
+          ${data.cpf}
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 13px; font-weight: 600; color: #f8fafc; text-transform: uppercase;">
+          Descrição
+        </td>
+        <td valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 14px; color: #94a3b8; white-space: pre-wrap;">
+          ${data.descricao}
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" style="padding: 13px 21px; font-size: 13px; font-weight: 600; color: #f8fafc; text-transform: uppercase;">
+          Data/Hora
+        </td>
+        <td valign="top" style="padding: 13px 21px; font-size: 14px; color: #94a3b8;">
+          ${new Date(data.created_at).toLocaleString('pt-BR')}
+        </td>
+      </tr>
+    </table>
+    <div style="margin-top: 16px; font-size: 12px; color: #64748b;">
+      Lembrete legal: A LGPD (Lei 13.709/18) estabelece um prazo de <strong style="color:#ef4444">15 dias</strong> para resposta contados desta data base.
+    </div>
+  `;
+
+  return BASE_EMAIL_TEMPLATE(
+    '#f43f5e', // accent (rose para alerta DPO)
+    '#e11d48', // accent dark
+    'Solicitação LGPD Recebida',
+    `Titular Requereu: ${data.tipo}`,
+    '#f43f5e',
+    bodyContent,
+    'Responder Titular (DPO)',
+    `mailto:${data.email}?subject=MyPass — Solicitação LGPD Recebida`
+  );
+}
