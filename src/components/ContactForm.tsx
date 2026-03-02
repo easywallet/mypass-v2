@@ -156,15 +156,21 @@ export const ContactForm = () => {
                                 </div>
                             </div>
 
-                            <div className="flex flex-col gap-4">
+                            <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-8 mt-8">
                                 <div>
-                                    <div className="text-xl font-bold text-white tracking-tighter flex items-center gap-2">
-                                        <span className="text-emerald-400">{"<"} 2s</span> <span className="text-slate-500">·</span> Velocidade de Autenticação
+                                    <div className="text-3xl md:text-4xl font-black text-emerald-400 tracking-tighter mb-2">
+                                        {"<"} 2s
+                                    </div>
+                                    <div className="text-xs font-bold text-slate-500 uppercase tracking-widest leading-relaxed">
+                                        Velocidade de<br />Autenticação
                                     </div>
                                 </div>
-                                <div>
-                                    <div className="text-xl font-bold text-white tracking-tighter flex items-center gap-2">
-                                        <span className="text-emerald-400">100%</span> <span className="text-slate-500">·</span> Bloqueio Anti-Injeção
+                                <div className="border-l border-white/10 pl-8">
+                                    <div className="text-3xl md:text-4xl font-black text-emerald-400 tracking-tighter mb-2">
+                                        100%
+                                    </div>
+                                    <div className="text-xs font-bold text-slate-500 uppercase tracking-widest leading-relaxed">
+                                        Bloqueio<br />Anti-Injeção
                                     </div>
                                 </div>
                             </div>

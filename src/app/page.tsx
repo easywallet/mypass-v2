@@ -39,7 +39,7 @@ const Navbar = () => (
 );
 
 const Footer = () => (
-  <footer className="py-34 px-8 border-t border-white/5 bg-slate-950">
+  <footer className="relative z-20 py-34 px-8 border-t border-white/5 bg-slate-950">
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-13">
       <div className="col-span-2">
         <div className="flex items-center gap-3 mb-8">
