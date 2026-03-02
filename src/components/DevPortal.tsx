@@ -137,7 +137,7 @@ export const DevPortal = () => {
                                 </a>
                             </Button>
                             <Button asChild variant="outline" className="border-white/10 text-white hover:bg-white/5 font-black uppercase tracking-widest text-xs h-14 px-10 rounded-2xl w-full sm:w-auto mt-4 sm:mt-0">
-                                <a href="#">
+                                <a href="mailto:sandbox@mypass.com.br?subject=Solicitação de Documentação API MyPass">
                                     Documentação API
                                 </a>
                             </Button>

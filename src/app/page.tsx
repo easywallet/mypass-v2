@@ -7,6 +7,7 @@ import { ContactForm } from '@/components/ContactForm';
 import { UnifiedJourneySection } from '@/components/UnifiedJourneySection';
 import { B2CSection } from '@/components/B2CSection';
 import { CertificationBadge } from '@/components/CertificationBadge';
+import { LGPDModal } from '@/components/LGPDModal';
 
 const Navbar = () => (
   <nav className="fixed top-0 inset-x-0 z-50 px-5 py-5 md:px-8">
@@ -74,13 +75,13 @@ const Footer = () => (
           <li><CertificationBadge certId="ibeta-level-2" variant="link" /></li>
           <li><CertificationBadge certId="praetorian-level-4" variant="link" /></li>
           <li><CertificationBadge certId="praetorian-blackbox" variant="link" /></li>
-          <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors flex items-center gap-2 mt-2">LGPD Art. 46</a></li>
+          <li><LGPDModal /></li>
         </ul>
       </div>
     </div>
 
     <div className="max-w-7xl mx-auto mt-21 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-5">
-      <p className="text-[10px] text-slate-600 font-bold uppercase tracking-[0.13em]">
+      <p className="text-[10px] text-slate-500 font-bold tracking-[0.1em]">
         © 2026 MyPass · Todos os direitos reservados.
       </p>
       <div className="flex gap-8">

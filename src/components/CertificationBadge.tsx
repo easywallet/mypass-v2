@@ -24,8 +24,9 @@ export function CertificationBadge({ certId, variant = "badge", className = "" }
         return (
             <>
                 <button
+                    type="button"
                     onClick={() => setIsModalOpen(true)}
-                    className={`text-slate-400 hover:text-white transition-colors text-sm text-left flex items-center gap-2 ${className}`}
+                    className={`text-slate-400 hover:text-emerald-400 transition-colors text-sm text-left flex items-center gap-2 cursor-pointer ${className}`}
                 >
                     <Icon className="w-4 h-4" style={{ color: cert.accentColor }} />
                     {cert.badge}
