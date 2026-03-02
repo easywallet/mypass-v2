@@ -183,7 +183,7 @@ export function getDeveloperConfirmationEmail(data: { nome: string }) {
                 <table border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="21" height="21" align="center" valign="middle" style="background-color: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px;">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span style="color:#10b981; font-weight:bold; font-size:14px; line-height:1;">&#10003;</span>
                     </td>
                   </tr>
                 </table>
@@ -198,7 +198,7 @@ export function getDeveloperConfirmationEmail(data: { nome: string }) {
                 <table border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="21" height="21" align="center" valign="middle" style="background-color: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px;">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span style="color:#10b981; font-weight:bold; font-size:14px; line-height:1;">&#10003;</span>
                     </td>
                   </tr>
                 </table>
@@ -213,7 +213,7 @@ export function getDeveloperConfirmationEmail(data: { nome: string }) {
                 <table border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="21" height="21" align="center" valign="middle" style="background-color: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px;">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span style="color:#10b981; font-weight:bold; font-size:14px; line-height:1;">&#10003;</span>
                     </td>
                   </tr>
                 </table>
@@ -228,7 +228,7 @@ export function getDeveloperConfirmationEmail(data: { nome: string }) {
                 <table border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="21" height="21" align="center" valign="middle" style="background-color: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px;">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span style="color:#10b981; font-weight:bold; font-size:14px; line-height:1;">&#10003;</span>
                     </td>
                   </tr>
                 </table>
@@ -365,7 +365,7 @@ export function getEnterpriseConfirmationEmail(data: { nome: string; segmento: s
                 <table border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="21" height="21" align="center" valign="middle" style="background-color: rgba(124, 58, 237, 0.12); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: 8px;">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span style="color:#7c3aed; font-weight:bold; font-size:14px; line-height:1;">&#10003;</span>
                     </td>
                   </tr>
                 </table>
@@ -380,7 +380,7 @@ export function getEnterpriseConfirmationEmail(data: { nome: string; segmento: s
                 <table border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="21" height="21" align="center" valign="middle" style="background-color: rgba(124, 58, 237, 0.12); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: 8px;">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span style="color:#7c3aed; font-weight:bold; font-size:14px; line-height:1;">&#10003;</span>
                     </td>
                   </tr>
                 </table>
@@ -395,7 +395,7 @@ export function getEnterpriseConfirmationEmail(data: { nome: string; segmento: s
                 <table border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="21" height="21" align="center" valign="middle" style="background-color: rgba(124, 58, 237, 0.12); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: 8px;">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span style="color:#7c3aed; font-weight:bold; font-size:14px; line-height:1;">&#10003;</span>
                     </td>
                   </tr>
                 </table>
@@ -410,7 +410,7 @@ export function getEnterpriseConfirmationEmail(data: { nome: string; segmento: s
                 <table border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="21" height="21" align="center" valign="middle" style="background-color: rgba(124, 58, 237, 0.12); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: 8px;">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span style="color:#7c3aed; font-weight:bold; font-size:14px; line-height:1;">&#10003;</span>
                     </td>
                   </tr>
                 </table>
