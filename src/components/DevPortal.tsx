@@ -130,12 +130,16 @@ export const DevPortal = () => {
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-5">
-                            <Button className="bg-white text-slate-950 hover:bg-slate-200 font-black uppercase tracking-widest text-xs h-14 px-10 rounded-2xl">
-                                Acessar Sandbox Dev
-                                <ArrowRight className="ml-2 w-4 h-4" />
+                            <Button asChild className="bg-white text-slate-950 hover:bg-slate-200 font-black uppercase tracking-widest text-xs h-14 px-10 rounded-2xl w-full sm:w-auto mt-4 sm:mt-0">
+                                <a href="#contato-enterprise">
+                                    Acessar Sandbox Dev
+                                    <ArrowRight className="ml-2 w-4 h-4" />
+                                </a>
                             </Button>
-                            <Button variant="outline" className="border-white/10 text-white hover:bg-white/5 font-black uppercase tracking-widest text-xs h-14 px-10 rounded-2xl">
-                                Documentação API
+                            <Button asChild variant="outline" className="border-white/10 text-white hover:bg-white/5 font-black uppercase tracking-widest text-xs h-14 px-10 rounded-2xl w-full sm:w-auto mt-4 sm:mt-0">
+                                <a href="#">
+                                    Documentação API
+                                </a>
                             </Button>
                         </div>
                     </div>

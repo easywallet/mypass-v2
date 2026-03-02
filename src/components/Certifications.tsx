@@ -33,21 +33,6 @@ export const Certifications = () => {
                     <CertificationBadge certId="ibeta-level-2" variant="card" className="h-full" />
                     <CertificationBadge certId="ibeta-level-1" variant="card" className="h-full" />
                 </div>
-
-                <div className="mt-16 glass p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-8 border-emerald-500/10">
-                    <div className="flex items-center gap-6">
-                        <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
-                            <ShieldCheck className="w-8 h-8 text-emerald-400" />
-                        </div>
-                        <div>
-                            <h4 className="text-xl font-bold text-white">Auditoria Praetorian Security</h4>
-                            <p className="text-slate-400 text-sm">Resiliência absoluta contra ataques injetados de Nível 4 e 5.</p>
-                        </div>
-                    </div>
-                    <a href="#contato-enterprise" className="px-6 py-3 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold rounded-lg hover:bg-emerald-500/20 transition-all">
-                        Solicitar Certificado via Demo
-                    </a>
-                </div>
             </div>
         </section>
     );
