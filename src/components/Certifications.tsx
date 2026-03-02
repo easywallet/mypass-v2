@@ -8,7 +8,7 @@ import { CertificationBadge } from './CertificationBadge';
 
 export const Certifications = () => {
     return (
-        <section className="py-24 px-6 bg-slate-950/50 relative overflow-hidden">
+        <section id="compliance" className="py-24 px-6 bg-slate-950/50 relative overflow-hidden">
             {/* Background accent */}
             <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] -z-10" />
 
