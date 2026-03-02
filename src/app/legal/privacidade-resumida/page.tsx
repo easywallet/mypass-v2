@@ -1,64 +1,63 @@
 import { LegalPageLayout } from "@/components/LegalPageLayout";
-import { ShieldCheck, Eye, Search, Lock } from "lucide-react";
+import { ShieldCheck, Lock, User, Server } from "lucide-react";
 
 export default function PrivacidadeResumida() {
-    const cards = [
-        {
-            icon: Eye,
-            title: "O Ponto Inicial",
-            desc: "Nós precisamos de permissão. Só analisamos seu rosto e comparamos com seus documentos se você clicar ativamente e nos conceder essa atribuição durante o fluxo (KYC)."
-        },
-        {
-            icon: Search,
-            title: "Por que usamos?",
-            desc: "Para proteger você. Garantimos que robôs, deepfakes ou dados fotográficos roubados nunca se passem por você nas plataformas das instituições protegidas pela MyPass."
-        },
-        {
-            icon: ShieldCheck,
-            title: "Como protegemos?",
-            desc: "Quando você tira a 'selfie 3D', nós transformamos as milhões de métricas do seu rosto numa hash cifrada inquebrável. Não guardamos fotos suas em pastas vulneráveis."
-        },
-        {
-            icon: Lock,
-            title: "Seus Direitos",
-            desc: "Seus dados, suas regras. Você pode nos cobrar auditoria, solicitar portabilidade em JSON ou requerer o seu Direito ao Esquecimento quando quiser via DPO."
-        }
-    ];
-
     return (
         <LegalPageLayout
-            topic="Privacidade Resumida"
-            title="O Essencial Sobre Seus Dados"
-            lastUpdated="01 de março de 2026"
+            topic="Resumo de Privacidade"
+            title="Resumo de Privacidade"
         >
-            <p className="text-xl text-slate-400 mb-12">
-                Nós odiamos juridiquês tanto quanto você. Entenda exatamente como tratamos a sua biometria e a sua identidade, sem jargões.
+            <p>
+                Versão simplificada da nossa Política de Privacidade. Para a versão completa, acesse <a href="/legal/politica-privacidade">Política de Privacidade</a>.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
-                {cards.map((card, idx) => {
-                    const Icon = card.icon;
-                    return (
-                        <div key={idx} className="bg-[#0f0f1f] border border-[#1e293b] p-8 rounded-2xl hover:border-emerald-500/50 transition-colors group">
-                            <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6">
-                                <Icon className="w-6 h-6 text-emerald-400 group-hover:scale-110 transition-transform" />
-                            </div>
-                            <h3 className="text-xl font-bold text-white mb-3">{card.title}</h3>
-                            <p className="text-slate-400 leading-relaxed text-sm">
-                                {card.desc}
-                            </p>
-                        </div>
-                    );
-                })}
-            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 mb-12">
 
-            <div className="mt-16 text-center border-t border-white/10 pt-12">
-                <p className="text-slate-400 text-sm legal-text">
-                    Acha que precisa de mais detalhes? Sem problemas. <br />
-                    Leia nossa <a href="/legal/politica-privacidade" className="text-emerald-400 hover:text-emerald-300 font-bold">Política de Privacidade Jurídica Completa</a>.
-                </p>
-            </div>
+                {/* Card 1 */}
+                <div className="p-6 bg-[#0a0a14] border border-[#1e293b] rounded-2xl">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
+                        <ShieldCheck className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-white font-bold text-lg mb-2">O que coletamos</h3>
+                    <p className="text-slate-400 text-sm m-0">
+                        Nome, e-mail, CPF e FaceMap 3D criptografado. Nunca uma foto.
+                    </p>
+                </div>
 
+                {/* Card 2 */}
+                <div className="p-6 bg-[#0a0a14] border border-[#1e293b] rounded-2xl">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-violet-500/10 border border-violet-500/30 text-violet-400">
+                        <Lock className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-white font-bold text-lg mb-2">Por que usamos</h3>
+                    <p className="text-slate-400 text-sm m-0">
+                        Para verificar sua identidade com segurança em cada autenticação.
+                    </p>
+                </div>
+
+                {/* Card 3 */}
+                <div className="p-6 bg-[#0a0a14] border border-[#1e293b] rounded-2xl">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+                        <User className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-white font-bold text-lg mb-2">Seus direitos</h3>
+                    <p className="text-slate-400 text-sm m-0">
+                        Acesso, correção, exclusão e portabilidade dos seus dados. Contato: <a href="mailto:dpo@mypass.com.br" className="text-emerald-400">dpo@mypass.com.br</a>
+                    </p>
+                </div>
+
+                {/* Card 4 */}
+                <div className="p-6 bg-[#0a0a14] border border-[#1e293b] rounded-2xl">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-amber-500/10 border border-amber-500/30 text-amber-400">
+                        <Server className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-white font-bold text-lg mb-2">Como protegemos</h3>
+                    <p className="text-slate-400 text-sm m-0">
+                        FaceMap 3D criptografado, certificação Praetorian Level 4 & 5, APCER 0%.
+                    </p>
+                </div>
+
+            </div>
         </LegalPageLayout>
     );
 }
