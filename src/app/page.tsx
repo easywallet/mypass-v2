@@ -41,10 +41,10 @@ const Navbar = () => (
 
 const Footer = () => (
   <footer className="relative z-20 pt-24 pb-12 px-5 md:px-8 border-t border-white/10 bg-[#05050a]">
-    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8 xl:gap-16 mb-24">
+    <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start gap-0 mb-16 lg:mb-24">
 
-      {/* Coluna 1 — MYPASS */}
-      <div className="col-span-12 lg:col-span-3 lg:pr-8">
+      {/* Coluna 1 — MYPASS (Isolada) */}
+      <div className="w-full lg:w-64 lg:min-w-[256px] lg:pr-16 mb-8 lg:mb-0">
         <div className="flex items-center gap-3 mb-6">
           <Image
             src="/assets/logos/mypass-logo.png"
@@ -65,51 +65,58 @@ const Footer = () => (
         </div>
       </div>
 
-      {/* Coluna 2 — EMPRESA */}
-      <div className="col-span-6 lg:col-span-2">
-        <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Empresa</h4>
-        <ul className="space-y-4">
-          <li><Link href="/sobre" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Sobre Nós</Link></li>
-          <li><Link href="/compliance" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Compliance</Link></li>
-          <li><Link href="/carreiras" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Carreiras</Link></li>
-        </ul>
-      </div>
+      {/* Separador Vertical (apenas desktop) */}
+      <div className="hidden lg:block w-px bg-slate-800 self-stretch mr-16"></div>
 
-      {/* Coluna 3 — DESENVOLVEDORES */}
-      <div className="col-span-6 lg:col-span-2">
-        <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Desenvolvedores</h4>
-        <ul className="space-y-4">
-          <li><a href="mailto:sandbox@mypass.com.br" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Documentação API</a></li>
-          <li><a href="#developer-portal" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Acessar Sandbox</a></li>
-          <li><a href="#casos-de-uso" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Casos de Uso</a></li>
-          <li><span className="text-sm text-slate-600 block mt-2">Parceiro Tecnológico: FaceTec</span></li>
-        </ul>
-      </div>
+      {/* 4 Colunas Simétricas */}
+      <div className="flex-1 grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8 w-full">
 
-      {/* Coluna 4 — LEGAL & COMPLIANCE */}
-      <div className="col-span-6 lg:col-span-2">
-        <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Legal & Compliance</h4>
-        <ul className="space-y-4">
-          <li><Link href="/legal/politica-privacidade" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Política de Privacidade</Link></li>
-          <li><Link href="/legal/privacidade-resumida" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Resumo de Privacidade</Link></li>
-          <li><Link href="/legal/direitos-dos-titulares" className="text-sm text-emerald-400 font-medium hover:text-emerald-300 transition-colors bg-emerald-400/10 px-2 py-0.5 rounded -ml-2">Exercer Meus Direitos (LGPD)</Link></li>
-          <li><Link href="/legal/seguranca-dados" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Segurança de Dados</Link></li>
-          <li><Link href="/legal/cookies" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Política de Cookies</Link></li>
-          <li><Link href="/legal/termos-de-uso" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Termos de Uso</Link></li>
-        </ul>
-      </div>
+        {/* Coluna 2 — EMPRESA */}
+        <div>
+          <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Empresa</h4>
+          <ul className="space-y-4">
+            <li><Link href="/sobre" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Sobre Nós</Link></li>
+            <li><Link href="/compliance" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Compliance</Link></li>
+            <li><Link href="/carreiras" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Carreiras</Link></li>
+          </ul>
+        </div>
 
-      {/* Coluna 5 — CERTIFICAÇÕES */}
-      <div className="col-span-6 lg:col-span-3">
-        <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Certificações</h4>
-        <ul className="space-y-4">
-          <FooterCertLink certId="ibeta-level-1" label="iBeta PAD Level 1" />
-          <FooterCertLink certId="ibeta-level-2" label="iBeta PAD Level 2" />
-          <FooterCertLink certId="praetorian-level-4" label="Praetorian Level 4" />
-          <FooterCertLink certId="praetorian-blackbox" label="Praetorian Pentest" />
-        </ul>
-      </div>
+        {/* Coluna 3 — DESENVOLVEDORES */}
+        <div>
+          <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Desenvolvedores</h4>
+          <ul className="space-y-4">
+            <li><a href="mailto:sandbox@mypass.com.br" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Documentação API</a></li>
+            <li><a href="#developer-portal" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Acessar Sandbox</a></li>
+            <li><a href="#casos-de-uso" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Casos de Uso</a></li>
+            <li><span className="text-sm text-slate-600 block mt-2">Parceiro Tecnológico: FaceTec</span></li>
+          </ul>
+        </div>
 
+        {/* Coluna 4 — LEGAL & COMPLIANCE */}
+        <div>
+          <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Legal & Compliance</h4>
+          <ul className="space-y-4">
+            <li><Link href="/legal/politica-privacidade" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Política de Privacidade</Link></li>
+            <li><Link href="/legal/privacidade-resumida" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Resumo de Privacidade</Link></li>
+            <li><Link href="/legal/direitos-dos-titulares" className="text-sm text-emerald-400 font-medium hover:text-emerald-300 transition-colors bg-emerald-400/10 px-2 py-0.5 rounded -ml-2">Exercer Meus Direitos (LGPD)</Link></li>
+            <li><Link href="/legal/seguranca-dados" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Segurança de Dados</Link></li>
+            <li><Link href="/legal/cookies" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Política de Cookies</Link></li>
+            <li><Link href="/legal/termos-de-uso" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Termos de Uso</Link></li>
+          </ul>
+        </div>
+
+        {/* Coluna 5 — CERTIFICAÇÕES */}
+        <div>
+          <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Certificações</h4>
+          <ul className="space-y-4">
+            <FooterCertLink certId="ibeta-level-1" label="iBeta PAD Level 1" />
+            <FooterCertLink certId="ibeta-level-2" label="iBeta PAD Level 2" />
+            <FooterCertLink certId="praetorian-level-4" label="Praetorian Level 4" />
+            <FooterCertLink certId="praetorian-blackbox" label="Praetorian Pentest" />
+          </ul>
+        </div>
+
+      </div>
     </div>
 
     {/* Rodapé Inferior (Bloco de Conformidade) */}
