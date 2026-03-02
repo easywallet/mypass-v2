@@ -5,6 +5,7 @@ import { BentoGrid } from '@/components/BentoGrid';
 import { DevPortal } from '@/components/DevPortal';
 import { ContactForm } from '@/components/ContactForm';
 import { UnifiedJourneySection } from '@/components/UnifiedJourneySection';
+import { CertificationBadge } from '@/components/CertificationBadge';
 
 const Navbar = () => (
   <nav className="fixed top-0 inset-x-0 z-50 px-5 py-5 md:px-8">
@@ -68,9 +69,11 @@ const Footer = () => (
       <div>
         <h4 className="text-[10px] font-black uppercase tracking-[0.21em] text-white mb-8">Legal</h4>
         <ul className="space-y-5">
-          <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">iBeta Level 1 & 2</a></li>
-          <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">ISO 30107-3</a></li>
-          <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Praetorian Level 4/5</a></li>
+          <li><CertificationBadge certId="ibeta-level-1" variant="link" /></li>
+          <li><CertificationBadge certId="ibeta-level-2" variant="link" /></li>
+          <li><CertificationBadge certId="praetorian-level-4" variant="link" /></li>
+          <li><CertificationBadge certId="praetorian-blackbox" variant="link" /></li>
+          <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors flex items-center gap-2 mt-2">LGPD Art. 46</a></li>
           <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">LGPD Art. 46</a></li>
         </ul>
       </div>
