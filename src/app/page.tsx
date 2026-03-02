@@ -59,10 +59,10 @@ const Footer = () => (
       <div>
         <h4 className="text-[10px] font-black uppercase tracking-[0.21em] text-white mb-8">Empresa</h4>
         <ul className="space-y-5">
-          <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Sobre Nós</a></li>
-          <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Carreiras</a></li>
-          <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Compliance</a></li>
-          <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Privacidade</a></li>
+          <li><a href="#jornada" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Sobre Nós</a></li>
+          <li><a href="mailto:carreiras@mypass.com.br" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Carreiras</a></li>
+          <li><a href="#compliance" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Compliance</a></li>
+          <li><a href="#compliance" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">Privacidade</a></li>
         </ul>
       </div>
 
@@ -74,14 +74,13 @@ const Footer = () => (
           <li><CertificationBadge certId="praetorian-level-4" variant="link" /></li>
           <li><CertificationBadge certId="praetorian-blackbox" variant="link" /></li>
           <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors flex items-center gap-2 mt-2">LGPD Art. 46</a></li>
-          <li><a href="#" className="text-sm text-slate-500 hover:text-emerald-400 transition-colors">LGPD Art. 46</a></li>
         </ul>
       </div>
     </div>
 
     <div className="max-w-7xl mx-auto mt-21 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-5">
       <p className="text-[10px] text-slate-600 font-bold uppercase tracking-[0.13em]">
-        © 2026 MyPass Identity Systems. All Rights Reserved.
+        © 2026 MyPass · Todos os direitos reservados.
       </p>
       <div className="flex gap-8">
         <span className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.13em]">CONSTRUÍDA PARA O MERCADO BRASILEIRO</span>

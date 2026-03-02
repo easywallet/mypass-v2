@@ -156,16 +156,16 @@ export const ContactForm = () => {
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-8">
+                            <div className="flex flex-col gap-4">
                                 <div>
-                                    <div className="text-3xl font-black text-white mb-2 tracking-tighter flex items-baseline gap-1">
-                                        {"<"} 2 <span className="text-sm text-slate-500 uppercase">s</span>
+                                    <div className="text-xl font-bold text-white tracking-tighter flex items-center gap-2">
+                                        <span className="text-emerald-400">{"<"} 2s</span> <span className="text-slate-500">·</span> Velocidade de Autenticação
                                     </div>
-                                    <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Auth Speed</div>
                                 </div>
                                 <div>
-                                    <div className="text-3xl font-black text-white mb-2 tracking-tighter">100%</div>
-                                    <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Anti-Injection</div>
+                                    <div className="text-xl font-bold text-white tracking-tighter flex items-center gap-2">
+                                        <span className="text-emerald-400">100%</span> <span className="text-slate-500">·</span> Bloqueio Anti-Injeção
+                                    </div>
                                 </div>
                             </div>
                         </div>
