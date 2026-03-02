@@ -39,7 +39,7 @@ export const UnifiedJourneySection = () => {
                                     "Dados expostos em múltiplos bancos de dados",
                                     "Processo repetido no banco, hospital, escola, seguradora"
                                 ].map((item, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-slate-400 text-sm">
+                                    <li key={i} className="flex items-start gap-3 py-2 text-slate-400 text-sm leading-normal">
                                         <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-red-500/50 flex-shrink-0" />
                                         {item}
                                     </li>
@@ -65,7 +65,7 @@ export const UnifiedJourneySection = () => {
                                     "Token compartilhado com consentimento expresso",
                                     "Reconhecido em qualquer instituição parceira"
                                 ].map((item, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-emerald-100/80 text-sm">
+                                    <li key={i} className="flex items-start gap-3 py-2 text-emerald-100/80 text-sm leading-normal">
                                         <CheckCircle2 className="mt-1 w-4 h-4 text-emerald-500 flex-shrink-0" />
                                         {item}
                                     </li>

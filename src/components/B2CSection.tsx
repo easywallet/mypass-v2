@@ -21,7 +21,7 @@ export const B2CSection = () => {
                     </span>
                 </h2>
 
-                <p className="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto pb-6">
+                <p className="text-base text-slate-300 leading-relaxed text-justify max-w-2xl mx-auto pb-6">
                     A MyPass não guarda uma foto sua. Guarda um mapa matemático 3D criptografado — seu <strong className="text-white">FaceMap</strong>. Matematicamente inútil para hackers. Insubstituível para você.
                 </p>
 
