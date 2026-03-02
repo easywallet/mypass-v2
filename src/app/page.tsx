@@ -17,9 +17,9 @@ const Navbar = () => (
         <Image
           src="/assets/logos/mypass-logo.png"
           alt="MyPass Logo - Identidade Digital Soberana"
-          height={32}
+          height={38}
           width={0}
-          style={{ width: 'auto', height: '32px' }}
+          style={{ width: 'auto', height: '38px' }}
           className="drop-shadow-[0_0_13px_rgba(52,211,153,0.2)]"
           priority
           loading="eager"
