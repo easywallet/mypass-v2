@@ -41,10 +41,10 @@ const Navbar = () => (
 
 const Footer = () => (
   <footer className="relative z-20 pt-24 pb-12 px-5 md:px-8 border-t border-white/10 bg-[#05050a]">
-    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 xl:gap-16 mb-24">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8 xl:gap-16 mb-24">
 
       {/* Coluna 1 — MYPASS */}
-      <div className="lg:pr-8">
+      <div className="md:col-span-3 lg:pr-8">
         <div className="flex items-center gap-3 mb-6">
           <Image
             src="/assets/logos/mypass-logo.png"
@@ -66,7 +66,7 @@ const Footer = () => (
       </div>
 
       {/* Coluna 2 — EMPRESA */}
-      <div>
+      <div className="md:col-span-2">
         <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Empresa</h4>
         <ul className="space-y-4">
           <li><Link href="/sobre" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Sobre Nós</Link></li>
@@ -77,7 +77,7 @@ const Footer = () => (
       </div>
 
       {/* Coluna 3 — DESENVOLVEDORES */}
-      <div>
+      <div className="md:col-span-2">
         <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Desenvolvedores</h4>
         <ul className="space-y-4">
           <li><a href="mailto:sandbox@mypass.com.br" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Documentação API</a></li>
@@ -88,7 +88,7 @@ const Footer = () => (
       </div>
 
       {/* Coluna 4 — LEGAL & COMPLIANCE */}
-      <div>
+      <div className="md:col-span-5">
         <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Legal & Compliance</h4>
         <ul className="space-y-4">
           <li><Link href="/legal/politica-privacidade" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Política de Privacidade</Link></li>
