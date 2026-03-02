@@ -343,8 +343,8 @@ export function getDeveloperInternalAlertEmail(data: {
     `${data.empresa} quer integrar a MyPass`,
     '#f59e0b',
     bodyContent,
-    'Ver no Supabase',
-    'https://supabase.com/dashboard'
+    'Responder Desenvolvedor',
+    `mailto:${data.email}?subject=Acesso ao Sandbox MyPass — Bem-vindo, ${data.nome}!`
   );
 }
 
@@ -526,6 +526,6 @@ export function getEnterpriseInternalAlertEmail(data: {
     '#10b981',
     bodyContent,
     'Responder Lead',
-    `mailto:${data.email}`
+    `mailto:${data.email}?subject=MyPass — Sua Demo foi agendada, ${data.nome}!`
   );
 }
