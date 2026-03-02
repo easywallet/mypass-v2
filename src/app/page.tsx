@@ -44,7 +44,7 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8 xl:gap-16 mb-24">
 
       {/* Coluna 1 — MYPASS */}
-      <div className="md:col-span-3 lg:pr-8">
+      <div className="col-span-12 lg:col-span-3 lg:pr-8">
         <div className="flex items-center gap-3 mb-6">
           <Image
             src="/assets/logos/mypass-logo.png"
@@ -66,18 +66,17 @@ const Footer = () => (
       </div>
 
       {/* Coluna 2 — EMPRESA */}
-      <div className="md:col-span-2">
+      <div className="col-span-6 lg:col-span-2">
         <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Empresa</h4>
         <ul className="space-y-4">
           <li><Link href="/sobre" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Sobre Nós</Link></li>
           <li><Link href="/compliance" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Compliance</Link></li>
-          <li><a href="#compliance" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Certificações</a></li>
           <li><Link href="/carreiras" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Carreiras</Link></li>
         </ul>
       </div>
 
       {/* Coluna 3 — DESENVOLVEDORES */}
-      <div className="md:col-span-2">
+      <div className="col-span-6 lg:col-span-2">
         <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Desenvolvedores</h4>
         <ul className="space-y-4">
           <li><a href="mailto:sandbox@mypass.com.br" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Documentação API</a></li>
@@ -88,7 +87,7 @@ const Footer = () => (
       </div>
 
       {/* Coluna 4 — LEGAL & COMPLIANCE */}
-      <div className="md:col-span-5">
+      <div className="col-span-6 lg:col-span-2">
         <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Legal & Compliance</h4>
         <ul className="space-y-4">
           <li><Link href="/legal/politica-privacidade" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Política de Privacidade</Link></li>
@@ -97,11 +96,13 @@ const Footer = () => (
           <li><Link href="/legal/seguranca-dados" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Segurança de Dados</Link></li>
           <li><Link href="/legal/cookies" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Política de Cookies</Link></li>
           <li><Link href="/legal/termos-de-uso" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Termos de Uso</Link></li>
-          <li className="pt-4 pb-2">
-            <span className="text-[10px] font-black uppercase tracking-widest text-slate-600 flex items-center gap-2">
-              <span className="w-4 h-px bg-slate-800"></span> CERTIFICAÇÕES <span className="w-4 h-px bg-slate-800"></span>
-            </span>
-          </li>
+        </ul>
+      </div>
+
+      {/* Coluna 5 — CERTIFICAÇÕES */}
+      <div className="col-span-6 lg:col-span-3">
+        <h4 className="text-[11px] font-black uppercase tracking-widest text-white mb-6">Certificações</h4>
+        <ul className="space-y-4">
           <FooterCertLink certId="ibeta-level-1" label="iBeta PAD Level 1" />
           <FooterCertLink certId="ibeta-level-2" label="iBeta PAD Level 2" />
           <FooterCertLink certId="praetorian-level-4" label="Praetorian Level 4" />
