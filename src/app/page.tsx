@@ -8,7 +8,7 @@ import { ContactForm } from '@/components/ContactForm';
 import { UnifiedJourneySection } from '@/components/UnifiedJourneySection';
 import { B2CSection } from '@/components/B2CSection';
 import { CertificationBadge } from '@/components/CertificationBadge';
-import { LGPDModal } from '@/components/LGPDModal';
+import { FooterCertLink } from '@/components/FooterCertLink';
 
 const Navbar = () => (
   <nav className="fixed top-0 inset-x-0 z-50 px-5 py-5 md:px-8">
@@ -97,6 +97,15 @@ const Footer = () => (
           <li><Link href="/legal/seguranca-dados" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Segurança de Dados</Link></li>
           <li><Link href="/legal/cookies" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Política de Cookies</Link></li>
           <li><Link href="/legal/termos-de-uso" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Termos de Uso</Link></li>
+          <li className="pt-4 pb-2">
+            <span className="text-[10px] font-black uppercase tracking-widest text-slate-600 flex items-center gap-2">
+              <span className="w-4 h-px bg-slate-800"></span> CERTIFICAÇÕES <span className="w-4 h-px bg-slate-800"></span>
+            </span>
+          </li>
+          <FooterCertLink certId="ibeta-level-1" label="iBeta PAD Level 1" />
+          <FooterCertLink certId="ibeta-level-2" label="iBeta PAD Level 2" />
+          <FooterCertLink certId="praetorian-level-4" label="Praetorian Level 4" />
+          <FooterCertLink certId="praetorian-blackbox" label="Praetorian Pentest" />
         </ul>
       </div>
 

@@ -182,6 +182,7 @@ export const ContactForm = () => {
                         {/* Form Selection Tabs */}
                         <div className="flex gap-4 mb-8">
                             <button
+                                type="button"
                                 onClick={() => { setActiveForm('b2b'); setSuccess(false); }}
                                 className={`flex-1 py-4 px-6 rounded-2xl border transition-all flex items-center justify-center gap-3 font-black uppercase tracking-widest text-[10px] ${activeForm === 'b2b'
                                     ? 'bg-emerald-500 border-emerald-400 text-slate-950 shadow-[0_10px_20px_rgba(16,185,129,0.2)]'
@@ -192,6 +193,7 @@ export const ContactForm = () => {
                                 Enterprise (B2B)
                             </button>
                             <button
+                                type="button"
                                 onClick={() => { setActiveForm('dev'); setSuccess(false); }}
                                 className={`flex-1 py-4 px-6 rounded-2xl border transition-all flex items-center justify-center gap-3 font-black uppercase tracking-widest text-[10px] ${activeForm === 'dev'
                                     ? 'bg-cyan-500 border-cyan-400 text-slate-950 shadow-[0_10px_20px_rgba(6,182,212,0.2)]'
