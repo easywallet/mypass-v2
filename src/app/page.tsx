@@ -5,6 +5,7 @@ import { BentoGrid } from '@/components/BentoGrid';
 import { DevPortal } from '@/components/DevPortal';
 import { ContactForm } from '@/components/ContactForm';
 import { UnifiedJourneySection } from '@/components/UnifiedJourneySection';
+import { B2CSection } from '@/components/B2CSection';
 import { CertificationBadge } from '@/components/CertificationBadge';
 
 const Navbar = () => (
@@ -96,6 +97,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <UnifiedJourneySection />
+      <B2CSection />
       <Certifications />
       <BentoGrid />
       <DevPortal />
