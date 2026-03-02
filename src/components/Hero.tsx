@@ -14,6 +14,7 @@ const HeroVisual = () => (
         src="/assets/images/hero-face.png"
         alt="Validação Biométrica 3D da MyPass - Tecnologia Determinística"
         fill
+        sizes="(max-width: 768px) 100vw, 50vw"
         className="object-contain opacity-90 drop-shadow-[0_0_80px_rgba(34,211,238,0.2)]"
         priority
         loading="eager"

@@ -6,11 +6,19 @@ import { CertificationModal } from "./CertificationModal";
 export function FooterCertLink({ certId, label }: { certId: string, label: string }) {
     const [isOpen, setIsOpen] = useState(false);
     return (
-        <li>
+        <li style={{ marginBottom: '8px' }}>
             <button
                 type="button"
                 onClick={() => setIsOpen(true)}
-                className="text-sm text-slate-400 cursor-pointer hover:text-cyan-400 transition-colors text-left"
+                style={{
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    fontSize: '13px',
+                    color: '#94a3b8',
+                    cursor: 'pointer',
+                    textAlign: 'left'
+                }}
             >
                 {label}
             </button>

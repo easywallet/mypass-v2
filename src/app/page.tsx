@@ -17,9 +17,10 @@ const Navbar = () => (
         <Image
           src="/assets/logos/mypass-logo.png"
           alt="MyPass Logo - Identidade Digital Soberana"
-          width={350}
-          height={82}
-          className="h-[82px] w-auto drop-shadow-[0_0_13px_rgba(52,211,153,0.2)]"
+          height={32}
+          width={0}
+          style={{ width: 'auto', height: '32px' }}
+          className="drop-shadow-[0_0_13px_rgba(52,211,153,0.2)]"
           priority
           loading="eager"
         />
@@ -40,116 +41,198 @@ const Navbar = () => (
 );
 
 const Footer = () => (
-  <footer style={{ backgroundColor: '#05050a', padding: '64px 40px 32px' }}>
-    {/* CSS Isolado e Imutável para Garantia Matemática do Grid */}
-    <style dangerouslySetInnerHTML={{
-      __html: `
-        .footer-linha {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0;
-          padding-bottom: 48px;
-          border-bottom: 1px solid #1e293b;
-        }
-        .footer-logo {
-          width: 100%;
-          margin-bottom: 32px;
-        }
-        .footer-matematico {
-          flex: 1;
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 32px;
-          width: 100%;
-        }
-        @media (min-width: 1024px) {
-          .footer-linha {
-            flex-direction: row;
-          }
-          .footer-logo {
-            width: 220px;
-            min-width: 220px;
-            padding-right: 48px;
-            border-right: 1px solid #1e293b;
-            margin-right: 48px;
-            margin-bottom: 0;
-          }
-          .footer-matematico {
-            grid-template-columns: repeat(4, 1fr) !important;
-          }
-        }
-      `
-    }} />
-
-    {/* WRAPPER PRINCIPAL */}
+  <footer style={{
+    backgroundColor: '#05050a',
+    padding: '64px 40px 32px'
+  }}>
     <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
-      {/* LINHA DAS COLUNAS */}
-      <div className="footer-linha">
+      {/* UM ÚNICO ROW — logo + 4 colunas lado a lado */}
+      <div style={{
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        gap: '0',
+        paddingBottom: '48px',
+        borderBottom: '1px solid #1e293b'
+      }}>
 
-        {/* COLUNA A — MYPASS (largura fixa) */}
-        <div className="footer-logo">
-          <div style={{ fontSize: '20px', fontWeight: 700, color: '#00d4ff', marginBottom: '12px' }}>
+        {/* ELEMENTO 1 — LOGO (largura fixa, isolada) */}
+        <div style={{
+          width: '200px',
+          minWidth: '200px',
+          flexShrink: 0,
+          paddingRight: '40px',
+          marginRight: '40px',
+          borderRight: '1px solid #1e293b'
+        }}>
+          <div style={{
+            fontSize: '20px',
+            fontWeight: 700,
+            color: '#00d4ff',
+            marginBottom: '12px'
+          }}>
             MyPass
           </div>
-          <p style={{ fontSize: '13px', color: '#94a3b8', lineHeight: '1.6', marginBottom: '16px' }}>
-            Infraestrutura de Identidade Soberana para o mercado brasileiro.
+          <p style={{
+            fontSize: '13px',
+            color: '#94a3b8',
+            lineHeight: '1.6',
+            marginBottom: '16px'
+          }}>
+            Infraestrutura de Identidade Soberana
+            para o mercado brasileiro.
           </p>
-          <span style={{ fontSize: '10px', color: '#475569', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700 }}>
-            LGPD COMPLIANT &middot; BACEN 2026 READY
+          <span style={{
+            fontSize: '10px',
+            color: '#475569',
+            textTransform: 'uppercase',
+            letterSpacing: '0.1em'
+          }}>
+            LGPD COMPLIANT · BACEN 2026 READY
           </span>
         </div>
 
-        {/* 4 COLUNAS SIMÉTRICAS — flex-1 igual para todas */}
-        <div className="footer-matematico">
+        {/* ELEMENTOS 2-5 — 4 COLUNAS MATEMATICAMENTE IGUAIS */}
+        <div style={{
+          flex: 1,
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: '32px'
+        }}>
 
-          {/* COLUNA B — EMPRESA */}
+          {/* COLUNA 2 — EMPRESA */}
           <div>
-            <h4 style={{ fontSize: '11px', fontWeight: 600, color: '#f8fafc', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>
+            <h4 style={{
+              fontSize: '11px',
+              fontWeight: 600,
+              color: '#f8fafc',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              marginBottom: '16px'
+            }}>
               Empresa
             </h4>
-            <ul className="space-y-4">
-              <li><Link href="/sobre" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Sobre Nós</Link></li>
-              <li><Link href="/compliance" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Compliance</Link></li>
-              <li><Link href="/carreiras" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Carreiras</Link></li>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              <li style={{ marginBottom: '8px' }}>
+                <a href="/sobre" style={{
+                  fontSize: '13px', color: '#94a3b8',
+                  textDecoration: 'none'
+                }}>Sobre Nós</a>
+              </li>
+              <li style={{ marginBottom: '8px' }}>
+                <a href="/compliance" style={{
+                  fontSize: '13px', color: '#94a3b8',
+                  textDecoration: 'none'
+                }}>Compliance</a>
+              </li>
+              <li>
+                <a href="/carreiras" style={{
+                  fontSize: '13px', color: '#94a3b8',
+                  textDecoration: 'none'
+                }}>Carreiras</a>
+              </li>
             </ul>
           </div>
 
-          {/* COLUNA C — DESENVOLVEDORES */}
+          {/* COLUNA 3 — DESENVOLVEDORES */}
           <div>
-            <h4 style={{ fontSize: '11px', fontWeight: 600, color: '#f8fafc', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>
+            <h4 style={{
+              fontSize: '11px',
+              fontWeight: 600,
+              color: '#f8fafc',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              marginBottom: '16px'
+            }}>
               Desenvolvedores
             </h4>
-            <ul className="space-y-4">
-              <li><a href="mailto:sandbox@mypass.com.br" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Documentação API</a></li>
-              <li><a href="#developer-portal" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Acessar Sandbox</a></li>
-              <li><a href="#casos-de-uso" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Casos de Uso</a></li>
-              <li><span className="text-sm text-slate-600 block mt-2">Parceiro Tecnológico: FaceTec</span></li>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              <li style={{ marginBottom: '8px' }}>
+                <a href="mailto:sandbox@mypass.com.br"
+                  style={{
+                    fontSize: '13px', color: '#94a3b8',
+                    textDecoration: 'none'
+                  }}>
+                  Documentação API
+                </a>
+              </li>
+              <li style={{ marginBottom: '8px' }}>
+                <a href="#developer-portal"
+                  style={{
+                    fontSize: '13px', color: '#94a3b8',
+                    textDecoration: 'none'
+                  }}>
+                  Acessar Sandbox
+                </a>
+              </li>
+              <li style={{ marginBottom: '8px' }}>
+                <a href="#casos-de-uso"
+                  style={{
+                    fontSize: '13px', color: '#94a3b8',
+                    textDecoration: 'none'
+                  }}>
+                  Casos de Uso
+                </a>
+              </li>
+              <li>
+                <span style={{ fontSize: '13px', color: '#475569' }}>
+                  Parceiro: FaceTec
+                </span>
+              </li>
             </ul>
           </div>
 
-          {/* COLUNA D — LEGAL & COMPLIANCE */}
+          {/* COLUNA 4 — LEGAL & COMPLIANCE */}
           <div>
-            <h4 style={{ fontSize: '11px', fontWeight: 600, color: '#f8fafc', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>
+            <h4 style={{
+              fontSize: '11px',
+              fontWeight: 600,
+              color: '#f8fafc',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              marginBottom: '16px'
+            }}>
               Legal & Compliance
             </h4>
-            <ul className="space-y-4">
-              <li><Link href="/legal/politica-privacidade" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Política de Privacidade</Link></li>
-              <li><Link href="/legal/privacidade-resumida" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Resumo de Privacidade</Link></li>
-              <li><Link href="/legal/direitos-dos-titulares" className="text-sm text-emerald-400 font-medium hover:text-emerald-300 transition-colors bg-emerald-400/10 px-2 py-0.5 rounded -ml-2">Exercer Meus Direitos (LGPD)</Link></li>
-              <li><Link href="/legal/seguranca-dados" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Segurança de Dados</Link></li>
-              <li><Link href="/legal/cookies" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Política de Cookies</Link></li>
-              <li><Link href="/legal/termos-de-uso" className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">Termos de Uso</Link></li>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              {[
+                ['Política de Privacidade',
+                  '/legal/politica-privacidade'],
+                ['Resumo de Privacidade',
+                  '/legal/privacidade-resumida'],
+                ['Exercer Meus Direitos',
+                  '/legal/direitos-dos-titulares'],
+                ['Segurança de Dados',
+                  '/legal/seguranca-dados'],
+                ['Política de Cookies',
+                  '/legal/cookies'],
+                ['Termos de Uso',
+                  '/legal/termos-de-uso'],
+              ].map(([label, href]) => (
+                <li key={href} style={{ marginBottom: '8px' }}>
+                  <a href={href} style={{
+                    fontSize: '13px', color: '#94a3b8',
+                    textDecoration: 'none'
+                  }}>{label}</a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* COLUNA E — CERTIFICAÇÕES */}
+          {/* COLUNA 5 — CERTIFICAÇÕES */}
           <div>
-            <h4 style={{ fontSize: '11px', fontWeight: 600, color: '#f8fafc', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>
+            <h4 style={{
+              fontSize: '11px',
+              fontWeight: 600,
+              color: '#f8fafc',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              marginBottom: '16px'
+            }}>
               Certificações
             </h4>
-            <ul className="space-y-4">
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               <FooterCertLink certId="ibeta-level-1" label="iBeta PAD Level 1" />
               <FooterCertLink certId="ibeta-level-2" label="iBeta PAD Level 2" />
               <FooterCertLink certId="praetorian-level-4" label="Praetorian Level 4" />
@@ -161,21 +244,42 @@ const Footer = () => (
       </div>
 
       {/* BLOCO JURÍDICO */}
-      <div style={{ paddingTop: '32px', textAlign: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '16px' }}>
-          <span style={{ fontSize: '10px', fontWeight: 900, color: '#cbd5e1', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-            LGPD COMPLIANT &middot; PRAETORIAN CERTIFIED
-          </span>
-        </div>
-        <p style={{ fontSize: '12px', color: '#64748b', maxWidth: '768px', margin: '0 auto 16px', lineHeight: '1.6', textAlign: 'justify', textJustify: 'inter-word' }}>
-          A MyPass opera em total conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).
-          Nossa infraestrutura biométrica é certificada pelos laboratórios independentes iBeta (NIST/NVLAP)
-          e Praetorian Security, com APCER de 0% em todos os níveis de teste. O tratamento de dados
-          biométricos segue rigorosamente os Arts. 11 e 46 da LGPD, com Privacy by Design nativo —
-          nenhuma imagem facial é armazenada em texto plano.
+      <div style={{
+        paddingTop: '32px',
+        textAlign: 'center'
+      }}>
+        <p style={{
+          fontSize: '11px',
+          color: '#475569',
+          lineHeight: '1.6',
+          maxWidth: '700px',
+          margin: '0 auto 16px'
+        }}>
+          LGPD COMPLIANT · PRAETORIAN CERTIFIED
         </p>
-        <p style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 500 }}>
-          © 2026 MyPass &middot; Todos os direitos reservados.
+        <p style={{
+          fontSize: '12px',
+          color: '#334155',
+          lineHeight: '1.6',
+          maxWidth: '700px',
+          margin: '0 auto 24px'
+        }}>
+          A MyPass opera em total conformidade com a
+          Lei Geral de Proteção de Dados
+          (Lei nº 13.709/2018). Nossa infraestrutura
+          biométrica é certificada pelos laboratórios
+          independentes iBeta (NIST/NVLAP) e Praetorian
+          Security, com APCER de 0% em todos os níveis
+          de teste. O tratamento de dados biométricos
+          segue rigorosamente os Arts. 11 e 46 da LGPD,
+          com Privacy by Design nativo — nenhuma imagem
+          facial é armazenada em texto plano.
+        </p>
+        <p style={{
+          fontSize: '12px',
+          color: '#475569'
+        }}>
+          © 2026 MyPass · Todos os direitos reservados.
         </p>
       </div>
 
