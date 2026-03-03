@@ -19,24 +19,24 @@ export const metadata: Metadata = {
   keywords: ["identidade digital", "biometria", "PIX", "tokenização", "LGPD", "fintech", "autenticação", "MyPass"],
   robots: "index, follow",
   alternates: {
-    canonical: "https://mypass-v2.vercel.app",
+    canonical: "https://www.mypass.com.br",
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
   },
   openGraph: {
     title: "MyPass | Identidade Digital Soberana",
     description: "Seu Rosto. Seu Token. Seu Controle. Infraestrutura de identidade biométrica para o mercado brasileiro.",
-    url: "https://mypass-v2.vercel.app",
+    url: "https://www.mypass.com.br",
     siteName: "MyPass",
     type: "website",
     locale: "pt_BR",
     images: [
       {
-        url: "https://mypass-v2.vercel.app/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "https://www.mypass.com.br/icon.png",
+        width: 800,
+        height: 800,
         alt: "MyPass - Identidade Digital Soberana",
       },
     ],
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MyPass | Identidade Digital Soberana",
     description: "Biometria de Nível 4 + PIX + Tokenização para o mercado brasileiro.",
-    images: ["https://mypass-v2.vercel.app/og-image.png"],
+    images: ["https://www.mypass.com.br/icon.png"],
   },
 };
 

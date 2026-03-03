@@ -15,10 +15,12 @@ const Navbar = () => (
     <div className="max-w-7xl mx-auto flex items-center justify-between glass px-8 py-5 rounded-[21px] border-white/5 shadow-[0_13px_34px_rgba(0,0,0,0.5)]">
       <div className="flex items-center gap-3">
         <img
-          src="/assets/logos/mypass-logo.png"
+          src="/assets/logos/mypass-logo-new.png"
           alt="MyPass Logo - Identidade Digital Soberana"
-          style={{ height: '70px', width: 'auto' }}
+          style={{ height: '58px', width: 'auto' }}
           className="drop-shadow-[0_0_13px_rgba(52,211,153,0.2)] object-contain"
+        // Note: The total glass container height is ~88px (21px py-5 + 46px inner roughly). 
+        // 65% of 88px = 57.2px. Setting to 58px.
         />
       </div>
 
@@ -62,13 +64,12 @@ const Footer = () => (
           marginRight: '40px',
           borderRight: '1px solid #1e293b'
         }}>
-          <div style={{
-            fontSize: '20px',
-            fontWeight: 700,
-            color: '#00d4ff',
-            marginBottom: '12px'
-          }}>
-            MyPass
+          <div style={{ marginBottom: '12px' }}>
+            <img
+              src="/assets/logos/mypass-logo-new.png"
+              alt="MyPass Logo"
+              style={{ height: '42px', width: 'auto', display: 'block' }}
+            />
           </div>
           <p style={{
             fontSize: '13px',
