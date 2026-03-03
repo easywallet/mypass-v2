@@ -17,10 +17,10 @@ const Navbar = () => (
         <img
           src="/assets/logos/mypass-logo-new.png"
           alt="MyPass Logo - Identidade Digital Soberana"
-          style={{ height: '58px', width: 'auto' }}
+          style={{ height: '74px', width: 'auto' }}
           className="drop-shadow-[0_0_13px_rgba(52,211,153,0.2)] object-contain"
-        // Note: The total glass container height is ~88px (21px py-5 + 46px inner roughly). 
-        // 65% of 88px = 57.2px. Setting to 58px.
+        // Note: The total glass container height is ~114px (40px py-5 + 74px inner). 
+        // 74 / 114 = 64.9%. Setting to 74px hits exactly the 65% target for the head.
         />
       </div>
 
