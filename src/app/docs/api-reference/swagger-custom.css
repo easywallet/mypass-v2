@@ -1,0 +1,76 @@
+/* src/app/docs/api-reference/swagger-custom.css */
+@import "swagger-ui-react/swagger-ui.css";
+
+.swagger-ui {
+  background-color: #0a0f1e !important;
+  color: #94a3b8 !important;
+}
+
+.swagger-ui .topbar {
+  display: none !important;
+}
+
+.swagger-ui .info .title, 
+.swagger-ui .info li, 
+.swagger-ui .info p, 
+.swagger-ui .info table,
+.swagger-ui .model-title,
+.swagger-ui .operations-tag-control {
+  color: #f8fafc !important;
+}
+
+.swagger-ui .opblock-tag {
+  border-bottom: 1px solid #1e293b !important;
+  color: #f8fafc !important;
+}
+
+.swagger-ui .opblock-summary-path,
+.swagger-ui .opblock-summary-description {
+  color: #cbd5e1 !important;
+}
+
+.swagger-ui .scheme-container {
+  background-color: #0a0f1e !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid #1e293b !important;
+}
+
+.swagger-ui section.models {
+  border: 1px solid #1e293b !important;
+  border-radius: 12px !important;
+}
+
+.swagger-ui section.models.is-open h4 {
+  border-bottom: 1px solid #1e293b !important;
+}
+
+.swagger-ui select {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid #334155 !important;
+}
+
+.swagger-ui .btn.authorize {
+  background-color: #00d4ff !important;
+  border-color: #00d4ff !important;
+  color: #0a0f1e !important;
+}
+
+.swagger-ui .btn.authorize svg {
+  fill: #0a0f1e !important;
+}
+
+.swagger-ui .opblock.opblock-post {
+  background: rgba(16, 185, 129, 0.05) !important;
+  border-color: rgba(16, 185, 129, 0.2) !important;
+}
+
+.swagger-ui .opblock.opblock-get {
+  background: rgba(6, 182, 212, 0.05) !important;
+  border-color: rgba(6, 182, 212, 0.2) !important;
+}
+
+.swagger-ui .opblock.opblock-delete {
+  background: rgba(239, 68, 68, 0.05) !important;
+  border-color: rgba(239, 68, 68, 0.2) !important;
+}
