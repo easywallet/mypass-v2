@@ -4,13 +4,15 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, ShieldCheck, Code2, ArrowRight } from "lucide-react";
 
-const FormField = ({ label, type = "text", placeholder, options, value, onChange, required }: {
+const FormField = ({ label, type = "text", placeholder, options, value, onChange, onBlur, error, required }: {
     label: string,
     type?: string,
     placeholder?: string,
     options?: string[],
     value?: string,
     onChange?: (e: any) => void,
+    onBlur?: (e: any) => void,
+    error?: string,
     required?: boolean
 }) => (
     <div className="space-y-2">
@@ -31,10 +33,12 @@ const FormField = ({ label, type = "text", placeholder, options, value, onChange
                 type={type}
                 value={value}
                 onChange={onChange}
+                onBlur={onBlur}
                 placeholder={placeholder}
                 className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all font-medium"
             />
         )}
+        {error && <p className="text-[11px] font-bold text-amber-400">{error}</p>}
     </div>
 );
 
@@ -49,10 +53,57 @@ const CheckboxField = ({ label, checked, onChange }: { label: string, checked: b
     </label>
 );
 
+// ─── Helpers de Validação ────────────────────────────────────────────────────
+
+const PERSONAL_DOMAINS = [
+    'gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com',
+    'yahoo.com.br', 'hotmail.com.br', 'live.com', 'icloud.com',
+    'bol.com.br', 'uol.com.br', 'terra.com.br', 'ig.com.br'
+];
+
+const validateCorporateEmail = (email: string): string => {
+    const domain = email.split('@')[1]?.toLowerCase() ?? '';
+    if (domain && PERSONAL_DOMAINS.includes(domain))
+        return 'Use um e-mail corporativo. E-mails pessoais não são aceitos.';
+    return '';
+};
+
+// Máscara CNPJ: XX.XXX.XXX/XXXX-XX
+const formatCNPJ = (value: string): string => {
+    const d = value.replace(/\D/g, '').slice(0, 14);
+    return d
+        .replace(/(\d{2})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1/$2')
+        .replace(/(\d{4})(\d{1,2})/, '$1-$2');
+};
+
+// Validação CNPJ — Algoritmo Módulo 11
+const validateCNPJ = (cnpj: string): boolean => {
+    const d = cnpj.replace(/\D/g, '');
+    if (d.length !== 14 || /^(\d)\1+$/.test(d)) return false;
+    const calc = (s: string, len: number): number => {
+        let sum = 0, pos = len - 7;
+        for (let i = len; i >= 1; i--) {
+            sum += +s[len - i] * pos--;
+            if (pos < 2) pos = 9;
+        }
+        return sum % 11 < 2 ? 0 : 11 - (sum % 11);
+    };
+    return calc(d, 12) === +d[12] && calc(d, 13) === +d[13];
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 export const ContactForm = () => {
     const [activeForm, setActiveForm] = useState<'b2b' | 'dev'>('b2b');
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+
+    // Validation error states
+    const [b2bEmailError, setB2bEmailError] = useState('');
+    const [devEmailError, setDevEmailError] = useState('');
+    const [cnpjError, setCnpjError] = useState('');
 
     // Form States
     const [b2bData, setB2bData] = useState({ nome: '', email: '', empresa: '', cargo: '', segmento: '', mensagem: '' });
@@ -60,6 +111,7 @@ export const ContactForm = () => {
         nome: '',
         email: '',
         empresa: '',
+        cnpj: '',
         github: '',
         segmento: '',
         integracoes: [] as string[]
@@ -89,8 +141,19 @@ export const ContactForm = () => {
 
     const handleDevSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);
 
+        // Barreira de validação — impede POST com dados inválidos
+        const emailErr = validateCorporateEmail(devData.email);
+        if (emailErr) {
+            setDevEmailError(emailErr);
+            return;
+        }
+        if (!validateCNPJ(devData.cnpj)) {
+            setCnpjError('CNPJ inválido. Verifique e tente novamente.');
+            return;
+        }
+
+        setLoading(true);
         try {
             const res = await fetch('/api/developer-signup', {
                 method: 'POST',
@@ -103,7 +166,9 @@ export const ContactForm = () => {
 
             if (res.ok) {
                 setSuccess(true);
-                setDevData({ nome: '', email: '', empresa: '', github: '', segmento: '', integracoes: [] });
+                setDevData({ nome: '', email: '', empresa: '', cnpj: '', github: '', segmento: '', integracoes: [] });
+                setCnpjError('');
+                setDevEmailError('');
             }
         } catch (err) {
             console.error(err);
@@ -242,6 +307,8 @@ export const ContactForm = () => {
                                             required
                                             value={b2bData.email}
                                             onChange={e => setB2bData({ ...b2bData, email: e.target.value })}
+                                            onBlur={e => setB2bEmailError(validateCorporateEmail(e.target.value))}
+                                            error={b2bEmailError}
                                         />
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -302,6 +369,8 @@ export const ContactForm = () => {
                                             required
                                             value={devData.email}
                                             onChange={e => setDevData({ ...devData, email: e.target.value })}
+                                            onBlur={e => setDevEmailError(validateCorporateEmail(e.target.value))}
+                                            error={devEmailError}
                                         />
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -318,6 +387,28 @@ export const ContactForm = () => {
                                             value={devData.github}
                                             onChange={e => setDevData({ ...devData, github: e.target.value })}
                                         />
+                                    </div>
+
+                                    {/* CNPJ DA EMPRESA — campo obrigatório para rastreabilidade jurídica */}
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">CNPJ DA EMPRESA</label>
+                                        <input
+                                            required
+                                            type="text"
+                                            inputMode="numeric"
+                                            value={devData.cnpj}
+                                            onChange={e => setDevData({ ...devData, cnpj: formatCNPJ(e.target.value) })}
+                                            onBlur={() => {
+                                                if (devData.cnpj && !validateCNPJ(devData.cnpj)) {
+                                                    setCnpjError('CNPJ inválido. Verifique e tente novamente.');
+                                                } else {
+                                                    setCnpjError('');
+                                                }
+                                            }}
+                                            placeholder="00.000.000/0001-00"
+                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all font-medium"
+                                        />
+                                        {cnpjError && <p className="text-[11px] font-bold text-amber-400">{cnpjError}</p>}
                                     </div>
 
                                     <FormField

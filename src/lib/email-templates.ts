@@ -166,18 +166,19 @@ const BASE_EMAIL_TEMPLATE = (
 </html>
 `;
 
-export function getDeveloperConfirmationEmail(data: { nome: string }) {
+export function getDeveloperConfirmationEmail(data: { nome: string; empresa: string }) {
   const bodyContent = `
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr>
-        <td style="padding-bottom: 21px;">
-          Nossa equipe está configurando o seu ambiente. Em até 1 dia útil, você receberá as credenciais de acesso oficiais.
+        <td style="padding-bottom: 21px; font-size: 15px; color: #94a3b8; line-height: 1.7;">
+          Recebemos sua solicitação de acesso ao Sandbox MyPass para a empresa <strong style="color:#f8fafc">${data.empresa}</strong>.<br/><br/>
+          Nossa equipe irá analisar seu cadastro em até 1 dia útil. Durante a análise, verificamos:
         </td>
       </tr>
       <tr>
         <td style="padding-bottom: 34px;">
           <table border="0" cellpadding="0" cellspacing="0" width="100%">
-            <!-- Item 1 -->
+            <!-- Item 1: Dados da empresa e CNPJ -->
             <tr>
               <td width="34" valign="top" style="padding-bottom: 13px;">
                 <table border="0" cellpadding="0" cellspacing="0">
@@ -189,10 +190,10 @@ export function getDeveloperConfirmationEmail(data: { nome: string }) {
                 </table>
               </td>
               <td valign="top" style="padding-bottom: 13px; font-size: 15px; color: #94a3b8; line-height: 21px;">
-                API Keys de desenvolvimento
+                Dados da empresa e CNPJ verificados
               </td>
             </tr>
-            <!-- Item 2 -->
+            <!-- Item 2: Perfil técnico -->
             <tr>
               <td width="34" valign="top" style="padding-bottom: 13px;">
                 <table border="0" cellpadding="0" cellspacing="0">
@@ -204,25 +205,10 @@ export function getDeveloperConfirmationEmail(data: { nome: string }) {
                 </table>
               </td>
               <td valign="top" style="padding-bottom: 13px; font-size: 15px; color: #94a3b8; line-height: 21px;">
-                Documentação técnica completa
+                Perfil técnico e caso de uso analisados
               </td>
             </tr>
-            <!-- Item 3 -->
-            <tr>
-              <td width="34" valign="top" style="padding-bottom: 13px;">
-                <table border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="21" height="21" align="center" valign="middle" style="background-color: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px;">
-                      <span style="color:#10b981; font-weight:bold; font-size:14px; line-height:1;">&#10003;</span>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-              <td valign="top" style="padding-bottom: 13px; font-size: 15px; color: #94a3b8; line-height: 21px;">
-                Dados sintéticos para testes
-              </td>
-            </tr>
-            <!-- Item 4 -->
+            <!-- Item 3: Conformidade -->
             <tr>
               <td width="34" valign="top">
                 <table border="0" cellpadding="0" cellspacing="0">
@@ -234,10 +220,15 @@ export function getDeveloperConfirmationEmail(data: { nome: string }) {
                 </table>
               </td>
               <td valign="top" style="font-size: 15px; color: #94a3b8; line-height: 21px;">
-                Suporte via e-mail prioritário
+                Conformidade com nossa Política de Uso
               </td>
             </tr>
           </table>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-bottom: 34px; font-size: 15px; color: #94a3b8; line-height: 1.7;">
+          Após aprovação, você receberá seu token de acesso diretamente neste e-mail.
         </td>
       </tr>
       <tr>
@@ -245,7 +236,7 @@ export function getDeveloperConfirmationEmail(data: { nome: string }) {
           <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #0f0f1f; border: 1px solid #1e293b; border-radius: 13px;">
             <tr>
               <td align="center" style="padding: 21px; font-size: 13px; color: #64748b; line-height: 1.5;">
-                Dúvidas? Responda este e-mail ou acesse <a href="https://mypass-v2.vercel.app" style="color: #64748b; text-decoration: underline;">mypass.com.br</a>
+                Dúvidas? Responda este e-mail ou acesse <a href="https://www.mypass.com.br" style="color: #64748b; text-decoration: underline;">mypass.com.br</a>
               </td>
             </tr>
           </table>
@@ -258,11 +249,11 @@ export function getDeveloperConfirmationEmail(data: { nome: string }) {
     '#00d4ff', // accent (ciano)
     '#0099cc', // accent dark
     'Acesso ao Sandbox Solicitado',
-    `Olá, ${data.nome}. Recebemos seu cadastro.`,
+    `Olá, ${data.nome}. Recebemos sua solicitação.`,
     '#00d4ff',
     bodyContent,
     'Explorar Documentação',
-    'https://mypass-v2.vercel.app/#developer-portal'
+    'https://www.mypass.com.br/docs'
   );
 }
 
@@ -270,11 +261,14 @@ export function getDeveloperInternalAlertEmail(data: {
   nome: string;
   email: string;
   empresa: string;
+  cnpj: string;
   github: string | null;
   segmento: string;
   tipos_integracao: string[];
   created_at: string;
 }) {
+  const emailDomain = data.email.split('@')[1] || data.email;
+
   const bodyContent = `
     <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #0f0f1f; border: 1px solid #1e293b; border-radius: 13px;">
       <tr>
@@ -303,10 +297,18 @@ export function getDeveloperInternalAlertEmail(data: {
       </tr>
       <tr>
         <td valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 13px; font-weight: 600; color: #f8fafc; text-transform: uppercase;">
+          CNPJ
+        </td>
+        <td valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 14px; color: #94a3b8; font-family: 'Courier New', monospace;">
+          ${data.cnpj}
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 13px; font-weight: 600; color: #f8fafc; text-transform: uppercase;">
           GitHub
         </td>
         <td valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 14px; color: #94a3b8;">
-          ${data.github || '-'}
+          ${data.github || 'não informado'}
         </td>
       </tr>
       <tr>
@@ -326,11 +328,38 @@ export function getDeveloperInternalAlertEmail(data: {
         </td>
       </tr>
       <tr>
+        <td valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 13px; font-weight: 600; color: #f8fafc; text-transform: uppercase;">
+          Status
+        </td>
+        <td valign="top" style="padding: 13px 21px; border-bottom: 1px solid #1e293b; font-size: 14px;">
+          <span style="color:#f59e0b; font-weight:700; text-transform:uppercase; font-size:12px; letter-spacing:1px;">PENDING</span>
+        </td>
+      </tr>
+      <tr>
         <td valign="top" style="padding: 13px 21px; font-size: 13px; font-weight: 600; color: #f8fafc; text-transform: uppercase;">
           Data/Hora
         </td>
         <td valign="top" style="padding: 13px 21px; font-size: 14px; color: #94a3b8;">
-          ${new Date(data.created_at).toLocaleString('pt-BR')}
+          ${new Date(data.created_at).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })}
+        </td>
+      </tr>
+    </table>
+
+    <!-- PRÓXIMOS PASSOS -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 21px; background-color: #0f0f1f; border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 13px;">
+      <tr>
+        <td style="padding: 16px 21px; border-bottom: 1px solid #1e293b;">
+          <span style="font-size: 12px; font-weight: 700; color: #f59e0b; text-transform: uppercase; letter-spacing: 1.5px;">Proximos Passos — Time MyPass</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 16px 21px; font-size: 13px; color: #94a3b8; line-height: 1.9;">
+          <strong style="color:#f8fafc;">1.</strong> Verificar o CNPJ <span style="font-family:monospace; color:#f8fafc;">${data.cnpj}</span> no site da Receita Federal:<br/>
+          &nbsp;&nbsp;&nbsp;<a href="https://www.gov.br/receitafederal/pt-br" style="color:#00d4ff;">https://www.gov.br/receitafederal/pt-br</a><br/><br/>
+          <strong style="color:#f8fafc;">2.</strong> Verificar se o dominio do e-mail <span style="font-family:monospace; color:#f8fafc;">${emailDomain}</span> corresponde ao site da empresa.<br/><br/>
+          <strong style="color:#f8fafc;">3.</strong> Se aprovado: acessar Supabase &gt; developer_signups &gt; preencher <strong style="color:#10b981;">sandbox_token</strong> (UUID) e <strong style="color:#10b981;">approved_at</strong>.<br/><br/>
+          <strong style="color:#f8fafc;">4.</strong> Copiar o token e enviar manualmente para <a href="mailto:${data.email}" style="color:#00d4ff;">${data.email}</a> com instrucao:<br/>
+          &nbsp;&nbsp;&nbsp;<span style="font-family:monospace; background:#1e293b; padding:2px 6px; border-radius:4px; color:#10b981; font-size:12px;">document.cookie=&quot;mypass-doc-token=SEU_TOKEN; path=/&quot;</span>
         </td>
       </tr>
     </table>
@@ -340,11 +369,11 @@ export function getDeveloperInternalAlertEmail(data: {
     '#f59e0b', // accent (âmbar para alerta interno)
     '#d97706', // accent dark
     'Novo Dev Cadastrado',
-    `${data.empresa} quer integrar a MyPass`,
+    `${data.empresa} · ${data.segmento} · ANALISE PENDENTE`,
     '#f59e0b',
     bodyContent,
     'Responder Desenvolvedor',
-    `mailto:${data.email}?subject=Acesso ao Sandbox MyPass — Bem-vindo, ${data.nome}!`
+    `mailto:${data.email}?subject=Acesso ao Sandbox MyPass — ${data.nome}`
   );
 }
 
