@@ -1,7 +1,8 @@
 "use client";
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { 
@@ -44,7 +45,10 @@ const EndpointCard = ({ method, path, title, description }: { method: 'POST' | '
   );
 };
 
-export default function DocsPage() {
+function DocsContent() {
+  const searchParams = useSearchParams();
+  const accessRequired = searchParams.get('access') === 'required';
+
   return (
     <main className="min-h-screen bg-slate-950 selection:bg-cyan-400/30">
       <div className="fixed inset-0 bg-radial-gradient opacity-60 pointer-events-none" />
@@ -59,6 +63,19 @@ export default function DocsPage() {
             <ChevronRight className="w-3 h-3" />
             <span className="text-cyan-400">Documentação</span>
           </nav>
+
+          {/* Access Denied Banner (Etapa B) */}
+          {accessRequired && (
+            <div className="mb-12 p-6 rounded-3xl bg-amber-500/5 border border-amber-500/20 flex items-center gap-6 animate-in fade-in slide-in-from-top-6 duration-700">
+              <div className="w-14 h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-500 shrink-0">
+                <Lock className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-white font-bold text-lg leading-tight mb-1">Esta área requer token de acesso ativo.</h3>
+                <p className="text-amber-500/70 text-sm">Solicite seu Sandbox abaixo para obter as credenciais de desenvolvedor e acessar a API Reference.</p>
+              </div>
+            </div>
+          )}
 
           <div className="flex flex-col lg:flex-row gap-16 items-start">
             
@@ -234,5 +251,17 @@ export default function DocsPage() {
 
       <Footer />
     </main>
+  );
+}
+
+export default function DocsPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-cyan-400"></div>
+      </div>
+    }>
+      <DocsContent />
+    </Suspense>
   );
 }
