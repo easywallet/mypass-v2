@@ -111,7 +111,7 @@ export const Footer = () => (
                         </h4>
                         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                             <li style={{ marginBottom: '8px' }}>
-                                <a href="mailto:sandbox@mypass.com.br"
+                                <a href="/docs"
                                     style={{
                                         fontSize: '13px', color: '#94a3b8',
                                         textDecoration: 'none'
