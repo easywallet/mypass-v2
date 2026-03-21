@@ -229,9 +229,11 @@ export default function GuiaPage() {
                 </div>
                 <div className="space-y-4 mb-8">
                   {[
-                    "Entre em contato com o administrador da plataforma para solicitar acesso.",
-                    "A API Key será gerada no painel de gerenciamento e fornecida a você uma única vez.",
-                    "Guarde a chave em local seguro (variável de ambiente, cofre de segredos, etc)."
+                    "O desenvolvedor acessa o formulário de cadastro em mypass.com.br",
+                    "Preenche os dados da empresa, incluindo CNPJ",
+                    "A solicitação passa por processo de aprovação",
+                    "Após aprovação, um token mpx_ é gerado e enviado ao desenvolvedor",
+                    "Este token é a API Key utilizada em todas as chamadas autenticadas"
                   ].map((item, i) => (
                     <div key={i} className="flex gap-4 items-start p-4 rounded-xl bg-white/5 border border-white/5">
                       <span className="text-cyan-400 font-bold">{i+1}.</span>
@@ -240,7 +242,7 @@ export default function GuiaPage() {
                   ))}
                 </div>
                 <Callout type="warning">
-                  A API Key não pode ser recuperada depois. Se perder, será necessário gerar uma nova (a anterior será revogada).
+                  A API Key não pode ser recuperada depois. Se perder, será necessário solicitar uma nova via painel administrativo.
                 </Callout>
               </section>
 
@@ -475,20 +477,42 @@ export default function GuiaPage() {
                   <SectionBadge number="09" />
                   <h2 className="text-2xl font-bold text-white uppercase tracking-tight">Autenticação</h2>
                 </div>
-                <p className="text-slate-400 text-sm mb-8">Todas as chamadas à API precisam de autenticação via API Key.</p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="p-6 rounded-2xl glass border-white/5">
-                    <h4 className="text-[10px] font-black uppercase text-cyan-400 mb-3">Opção 1: Header</h4>
-                    <code className="text-xs text-slate-300 bg-white/5 p-2 rounded block border border-white/5 font-mono">X-API-Key: sua-chave-api</code>
+                <div className="space-y-6 mb-10">
+                  {/* Nível 1 — Sandbox Token */}
+                  <div className="p-6 rounded-2xl bg-cyan-500/5 border border-cyan-500/10">
+                    <h4 className="text-cyan-400 font-bold text-sm mb-3 uppercase tracking-wider flex items-center gap-2">
+                       <ShieldCheck className="w-4 h-4" />
+                       Nível 1 — Sandbox Token (Acesso ao Portal)
+                    </h4>
+                    <ul className="text-xs text-slate-400 space-y-2 list-disc pl-4 leading-relaxed">
+                      <li>Para acessar o portal de desenvolvedores e a documentação interativa, utilize o sb_token fornecido durante o cadastro.</li>
+                      <li>Este token é exclusivo para autenticação no portal, <strong>NÃO</strong> deve ser usado em chamadas à API de produção.</li>
+                    </ul>
                   </div>
+
+                  {/* Nível 2 — Chamadas de API (X-API-Key) */}
                   <div className="p-6 rounded-2xl glass border-white/5">
-                    <h4 className="text-[10px] font-black uppercase text-cyan-400 mb-3">Opção 2: Query Param</h4>
-                    <code className="text-xs text-slate-300 bg-white/5 p-2 rounded block border border-white/5 font-mono">?key=sua-chave-api</code>
+                    <h4 className="text-slate-300 font-bold text-sm mb-4 uppercase tracking-wider flex items-center gap-2">
+                       <Lock className="w-4 h-4" />
+                       Nível 2 — Chamadas de API (X-API-Key)
+                    </h4>
+                    <p className="text-slate-400 text-xs mb-6">Todas as chamadas operacionais à API precisam de autenticação via API Key (mpx_).</p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="p-4 rounded-xl bg-white/5 border border-white/5 font-mono">
+                        <h5 className="text-[10px] font-black uppercase text-cyan-400/70 mb-2">Via Header</h5>
+                        <code className="text-[11px] text-slate-300">X-API-Key: sua-mpx-key</code>
+                      </div>
+                      <div className="p-4 rounded-xl bg-white/5 border border-white/5 font-mono">
+                        <h5 className="text-[10px] font-black uppercase text-cyan-400/70 mb-2">Via Query</h5>
+                        <code className="text-[11px] text-slate-300">?key=sua-mpx-key</code>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="space-y-4 mt-10">
+                <div className="space-y-4">
                    <Callout type="warning">
                       O query parameter é necessário para o Browser SDK, que não permite configurar headers customizados no XHR interno.
                    </Callout>
@@ -554,7 +578,7 @@ export default function GuiaPage() {
                      </div>
                    ))}
                 </div>
-                <CodeBlock code={`// Configurar o SDK com o endpoint MyPass\nFaceTecSDK.setServerBaseURL('https://facetec.easypay.com.br/api/facetec');\n\n// O SDK gerencia os POSTs e payloads criptografados`} />
+                <CodeBlock code={`// Configurar o SDK com o endpoint MyPass\n// Configure esta variável em seu .env.local para apontar ao servidor correto\nFaceTecSDK.setServerBaseURL(process.env.NEXT_PUBLIC_MYPASS_API_URL || 'https://facetec.easypay.com.br/api/facetec');\n\n// O SDK gerencia os POSTs e payloads criptografados`} />
                 <Callout type="info">
                   Neste fluxo, o SDK gerencia toda a complexidade criptográfica. O desenvolvedor apenas trata o callback final.
                 </Callout>
@@ -567,9 +591,19 @@ export default function GuiaPage() {
                   <h2 className="text-2xl font-bold text-white uppercase tracking-tight">Base URL</h2>
                 </div>
                 <p className="text-slate-400 text-sm mb-6">Endereço operacional de produção para todas as chamadas:</p>
-                <div className="p-6 rounded-2xl bg-cyan-400/5 border border-cyan-400/20 font-mono text-xl text-cyan-400 font-bold text-center mb-10">
+                <div className="p-6 rounded-2xl bg-cyan-400/5 border border-cyan-400/20 font-mono text-xl text-cyan-400 font-bold text-center mb-6">
                    https://facetec.easypay.com.br
                 </div>
+                
+                <div className="p-6 rounded-2xl glass border-white/5 mb-10">
+                  <h4 className="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest text-center">Recomendação</h4>
+                  <p className="text-xs text-slate-500 leading-relaxed text-center">
+                    Boas práticas: em ambientes de desenvolvimento, recomendamos configurar esta URL via variável de ambiente 
+                    <span className="text-cyan-400 font-mono mx-1">NEXT_PUBLIC_MYPASS_API_URL</span> 
+                    para evitar exposição no código-fonte e facilitar a troca entre ambientes.
+                  </p>
+                </div>
+
                 <CodeBlock code={`POST https://facetec.easypay.com.br/api/enrollment\nContent-Type: application/json\nX-API-Key: sua-chave-api\n{\n  "externalId": "12345678900",\n  ...\n}`} />
               </section>
 
