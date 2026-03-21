@@ -57,6 +57,10 @@ export async function middleware(request: NextRequest) {
         .eq('aprovado', true)
         .single();
 
+      console.log('[MIDDLEWARE] sbTokenCookie:', sbTokenCookie?.substring(0, 12));
+      console.log('[MIDDLEWARE] supabase data (Case A):', data);
+      console.log('[MIDDLEWARE] supabase error (Case A):', error);
+
       if (data && !error) {
         return NextResponse.next(); // Acesso liberado via cookie válido
       } else {
@@ -77,6 +81,10 @@ export async function middleware(request: NextRequest) {
         .eq('sandbox_token', urlToken)
         .eq('aprovado', true)
         .single();
+
+      console.log('[MIDDLEWARE] urlToken:', urlToken?.substring(0, 12));
+      console.log('[MIDDLEWARE] supabase data (Case B):', data);
+      console.log('[MIDDLEWARE] supabase error (Case B):', error);
 
       if (data && !error) {
         // Token válido -> Setar cookie e redirecionar para URL limpa (sem o ?token=)
