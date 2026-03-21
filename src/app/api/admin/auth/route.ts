@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
 import { SignJWT } from 'jose';
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
-const ADMIN_SESSION_SECRET = process.env.ADMIN_SESSION_SECRET;
-
 export async function POST(req: Request) {
+    const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+    const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+    const ADMIN_SESSION_SECRET = process.env.ADMIN_SESSION_SECRET;
+
     try {
         const { email, password } = await req.json();
 
