@@ -1,8 +1,8 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { jwtVerify } from 'jose';
 import { supabaseAdmin } from '@/lib/supabase';
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
     const token = request.cookies.get('admin_session')?.value;
     const secret = new TextEncoder().encode(process.env.ADMIN_SESSION_SECRET);
     if (!token) return NextResponse.json({ error: 'Não autorizado' }, { status: 401 });
