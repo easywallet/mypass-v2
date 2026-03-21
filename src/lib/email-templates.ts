@@ -634,3 +634,46 @@ export function getLGPDSolicitationEmail(data: {
     `mailto:${data.email}?subject=MyPass — Solicitação LGPD Recebida`
   );
 }
+export function getAdminApprovalEmail(data: { nome: string; sandboxToken: string }) {
+  const bodyContent = `
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td style="padding-bottom: 21px; font-size: 15px; color: #94a3b8; line-height: 1.7;">
+          Olá <strong>${data.nome}</strong>, seu acesso ao Sandbox MyPass foi aprovado. 
+          Agora você pode iniciar sua integração com nossa tecnologia de biometria facial e liveness.
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-bottom: 34px;">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #0f0f1f; border: 1px solid #1e293b; border-radius: 13px;">
+            <tr>
+              <td align="center" style="padding: 34px;">
+                <p style="margin: 0 0 10px 0; font-size: 11px; font-weight: 700; color: #00d4ff; text-transform: uppercase; letter-spacing: 2px;">Seu Sandbox Token</p>
+                <div style="font-family: 'Courier New', monospace; font-size: 20px; color: #f8fafc; font-weight: 700; letter-spacing: 1px;">
+                  ${data.sandboxToken}
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-bottom: 21px; font-size: 14px; color: #64748b; line-height: 1.6;">
+          Guarde este token com segurança. Ele não será exibido novamente no painel por motivos de segurança. 
+          Seu acesso permanecerá ativo por 7 dias após o primeiro uso no ambiente de Sandbox.
+        </td>
+      </tr>
+    </table>
+  `;
+
+  return BASE_EMAIL_TEMPLATE(
+    '#00d4ff', // accent (ciano)
+    '#0080ff', // accent dark
+    'Acesso ao Sandbox Aprovado',
+    'Sua chave de integração está pronta.',
+    '#00d4ff',
+    bodyContent,
+    'ACESSAR API REFERENCE',
+    `https://www.mypass.com.br/docs/api-reference?token=${data.sandboxToken}`
+  );
+}
