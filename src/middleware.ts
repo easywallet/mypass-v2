@@ -45,7 +45,7 @@ export async function middleware(request: NextRequest) {
     // Instância inline do Supabase para compatibilidade com Edge Runtime
     const supabase = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
     );
 
     // CASO A: Existe cookie -> Validar no Supabase
@@ -56,10 +56,6 @@ export async function middleware(request: NextRequest) {
         .eq('sandbox_token', sbTokenCookie)
         .eq('aprovado', true)
         .single();
-
-      console.log('[MIDDLEWARE] sbTokenCookie:', sbTokenCookie?.substring(0, 12));
-      console.log('[MIDDLEWARE] supabase data (Case A):', data);
-      console.log('[MIDDLEWARE] supabase error (Case A):', error);
 
       if (data && !error) {
         return NextResponse.next(); // Acesso liberado via cookie válido
@@ -81,10 +77,6 @@ export async function middleware(request: NextRequest) {
         .eq('sandbox_token', urlToken)
         .eq('aprovado', true)
         .single();
-
-      console.log('[MIDDLEWARE] urlToken:', urlToken?.substring(0, 12));
-      console.log('[MIDDLEWARE] supabase data (Case B):', data);
-      console.log('[MIDDLEWARE] supabase error (Case B):', error);
 
       if (data && !error) {
         // Token válido -> Setar cookie e redirecionar para URL limpa (sem o ?token=)
