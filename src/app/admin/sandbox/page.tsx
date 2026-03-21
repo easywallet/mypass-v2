@@ -5,7 +5,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { 
   Users, CheckCircle2, XCircle, LogOut, Loader2, 
-  Copy, Check, Clock, ExternalLink, ShieldCheck
+  Copy, Check, Clock, ExternalLink, ShieldCheck,
+  Building2, ShieldAlert
 } from 'lucide-react';
 
 export default function AdminSandboxDashboard() {
