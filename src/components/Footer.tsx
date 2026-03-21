@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { FooterCertLink } from '@/components/FooterCertLink';
+import { ShieldCheck } from 'lucide-react';
 
 export const Footer = () => (
     <footer style={{
@@ -120,6 +121,15 @@ export const Footer = () => (
                                 </a>
                             </li>
                             <li style={{ marginBottom: '8px' }}>
+                                <a href="/guia"
+                                    style={{
+                                        fontSize: '13px', color: '#94a3b8',
+                                        textDecoration: 'none'
+                                    }}>
+                                    Guia de Integração
+                                </a>
+                            </li>
+                            <li style={{ marginBottom: '8px' }}>
                                 <a href="#developer-portal"
                                     style={{
                                         fontSize: '13px', color: '#94a3b8',
@@ -138,9 +148,24 @@ export const Footer = () => (
                                 </a>
                             </li>
                             <li>
-                                <span style={{ fontSize: '13px', color: '#475569' }}>
-                                    Parceiro: FaceTec
-                                </span>
+                                <div 
+                                    title="Tecnologia exclusiva de 3D Liveness. Distribuição autorizada MyPass no Brasil."
+                                    style={{ 
+                                        backgroundColor: '#ffffff08', 
+                                        border: '1px solid #ffffff15', 
+                                        borderRadius: '6px', 
+                                        padding: '6px 10px', 
+                                        display: 'inline-flex', 
+                                        alignItems: 'center', 
+                                        gap: '8px',
+                                        cursor: 'help'
+                                    }}
+                                >
+                                    <ShieldCheck size={12} color="#00d4ff" />
+                                    <span style={{ fontSize: '11px', color: '#e2e8f0', fontWeight: 500 }}>
+                                        Powered by <strong style={{ color: '#00d4ff', fontWeight: 800 }}>FaceTec</strong>
+                                    </span>
+                                </div>
                             </li>
                         </ul>
                     </div>
